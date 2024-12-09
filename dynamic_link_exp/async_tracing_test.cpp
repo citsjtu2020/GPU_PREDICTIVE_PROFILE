@@ -22,6 +22,21 @@ using ::std::mutex;
 #include <string>
 using ::std::string;
 
+#include <vector>
+using ::std::vector;
+
+#include <sstream>
+using ::std::ostringstream;
+
+#include <sys/stat.h> // for mkdir on Linux/Unix
+//#include <sys/types.h>
+#include <unistd.h>
+#include <dirent.h>
+//#include <Metric.h>
+//#include <Eval.h>
+#include <FileOp.h>
+#include <fstream>
+
 # include <pybind11/pybind11.h>
 
 namespace py = pybind11;
@@ -78,7 +93,28 @@ do {                                                                           \
 #define ALIGN_BUFFER(buffer, align)                                            \
   (((uintptr_t) (buffer) & ((align)-1)) ? ((buffer) + (align) - ((uintptr_t) (buffer) & ((align)-1))) : (buffer))
 
-static uint64_t startTimestamp;
+static uint64_t startTimestamp1;
+
+bool directoryExists(string &path){
+    struct stat info;
+    if (stat(path.c_str(),&info)!=0){
+        return false;
+    }else{
+        return true;
+    }
+}
+
+bool createDirectory(string &path){
+    mode_t mode = 0755;
+    bool exist_check = directoryExists(path);
+    if (exist_check){
+        return true;
+    }
+
+    int result = mkdir(path.c_str(),mode);
+
+    return (result == 0);
+}
 
 typedef struct {
     volatile uint32_t initialized;
@@ -96,6 +132,10 @@ typedef struct {
     uint64_t memcpyTraced;
     uint64_t memsetTraced;
     uint64_t overheadTraced;
+    vector<string> tracingOutBuffer;
+    mutex trace_data_mutex;
+
+
     // pthread_t dynamicThread;
     // pthread_mutex_t mutexFinalize;
     // pthread_cond_t mutexCondition;
@@ -217,6 +257,51 @@ getActivityObjectKindId(CUpti_ActivityObjectKind kind, CUpti_ActivityObjectKindI
   return 0xffffffff;
 }
 
+bool store_tracing_results(string filepath){
+    bool mk_path_res = createDirectory(filepath);
+
+    if(mk_path_res){
+        //        int session_iter = ctx_data.iterations;
+        //        uint32_t context_id = 1;
+        //        if (ProfilerControl.ctx_id.count(ctx_data.ctx)){
+        //            context_id = ProfilerControl.ctx_id[ctx_data.ctx];
+        //        }else{
+        //            context_id = 1;
+        //        }
+
+//        string out_results = "Kernel,context,globalId,start,end,duration\n";
+//        int session_iter = ctx_data.iterations;
+        string out_results = "";
+
+        for(auto it=globalControl.tracingOutBuffer.begin();it!=globalControl.tracingOutBuffer.end();it++){
+            string tmp_Res = *it;
+            out_results = out_results + tmp_Res;
+        }
+
+
+        string base_file_name = filepath + "/" + "trace_"+std::to_string(startTimestamp1);
+        string out_file_name = base_file_name+".log";
+
+        std::ofstream outFile(out_file_name);
+
+        if (outFile.is_open()){
+            outFile << out_results;
+            outFile.close();
+            std::cout <<"Trace Data written successfully!" << std::endl;
+        }else{
+            std::cerr<<"Unable to open file for writing."<<std::endl;
+            return false;
+        }
+
+        return true;
+    }else{
+        std::cerr<<"Path Not Exists: Unable to create file for writing."<<std::endl;
+        return false;
+    }
+
+
+}
+
 static void
 printSummary(void) {
     
@@ -229,6 +314,23 @@ printSummary(void) {
     printf("\tMEMCPY traced : %llu", (unsigned long long)globalControl.memcpyTraced);
     printf("\tMEMSET traced : %llu", (unsigned long long)globalControl.memsetTraced);
     printf("\n-------------------------------------------------------------------\n");
+
+    std::ostringstream out_summ_info;
+    out_summ_info << "\n-------------------------------------------------------------------\n"
+    <<"\tKernels traced : "<<((unsigned long long)globalControl.kernelsTraced)
+    <<"\tObject traced : "<<((unsigned long long)globalControl.objectTraced)
+    <<"\tRuntime API traced : "<<((unsigned long long)globalControl.runtimeAPITraced)
+    <<"\tDriver API traced : "<<((unsigned long long)globalControl.driverAPITraced)
+    <<"\tContext traced : "<<((unsigned long long)globalControl.contextTraced)
+    <<"\tMEMCPY traced : "<<((unsigned long long)globalControl.memcpyTraced)
+    <<"\tMEMSET traced : "<<((unsigned long long)globalControl.memsetTraced)
+    <<"\n-------------------------------------------------------------------\n";
+
+      std::string result = out_summ_info.str();
+      globalControl.trace_data_mutex.lock();
+      globalControl.tracingOutBuffer.push_back(result);
+      globalControl.trace_data_mutex.unlock();
+
     
 }
 
@@ -244,7 +346,7 @@ atExitHandler(void) {
     }
 
     // PTHREAD_CALL(pthread_join(globalControl.dynamicThread, NULL));
-    printSummary();
+
 }
 
 void registerAtExitHandler(void) {
@@ -283,6 +385,17 @@ printActivity(CUpti_Activity *record)
              (unsigned int) (device->globalMemoryBandwidth / 1024 / 1024),
              (unsigned int) (device->globalMemorySize / 1024 / 1024),
              device->numMultiprocessors, (unsigned int) (device->coreClockRate / 1000));
+      std::ostringstream out_device_info;
+      out_device_info << "DEVICE " << device->name<< " (" <<device->id<<")"<<", capability "
+      <<device->computeCapabilityMajor<<"."<<device->computeCapabilityMinor<<", global memory (bandwidth "
+      <<((unsigned int) (device->globalMemoryBandwidth / 1024 / 1024))<<" GB/s, size "
+      <<((unsigned int) (device->globalMemorySize / 1024 / 1024))<<" MB), "<<"multiprocessors "<<device->numMultiprocessors
+      <<", clock "<<((unsigned int) (device->coreClockRate / 1000))<<" MHz\n";
+
+      std::string result = out_device_info.str();
+      globalControl.trace_data_mutex.lock();
+      globalControl.tracingOutBuffer.push_back(result);
+      globalControl.trace_data_mutex.unlock();
       globalControl.deviceTraced++;
       break;
     }
@@ -291,6 +404,15 @@ printActivity(CUpti_Activity *record)
       CUpti_ActivityDeviceAttribute *attribute = (CUpti_ActivityDeviceAttribute *)record;
       printf("DEVICE_ATTRIBUTE %u, device %u, value=0x%llx\n",
              attribute->attribute.cupti, attribute->deviceId, (unsigned long long)attribute->value.vUint64);
+      std::ostringstream out_device_info;
+      out_device_info << "DEVICE_ATTRIBUTE " << attribute->attribute.cupti<< ", device "
+      <<attribute->deviceId<<", value="<<((unsigned long long)attribute->value.vUint64)
+      <<"\n";
+
+      std::string result = out_device_info.str();
+      globalControl.trace_data_mutex.lock();
+      globalControl.tracingOutBuffer.push_back(result);
+      globalControl.trace_data_mutex.unlock();
       break;
     }
   case CUPTI_ACTIVITY_KIND_CONTEXT:
@@ -300,6 +422,16 @@ printActivity(CUpti_Activity *record)
              context->contextId, context->deviceId,
              getComputeApiKindString((CUpti_ActivityComputeApiKind) context->computeApiKind),
              (int) context->nullStreamId);
+      std::ostringstream out_context_info;
+      out_context_info << "CONTEXT " << context->contextId<< ", device "
+      <<context->deviceId<<", compute API "<<getComputeApiKindString((CUpti_ActivityComputeApiKind) context->computeApiKind)
+      <<"NULL stream "<<((int) context->nullStreamId)
+      <<"\n";
+
+      std::string result = out_context_info.str();
+      globalControl.trace_data_mutex.lock();
+      globalControl.tracingOutBuffer.push_back(result);
+      globalControl.trace_data_mutex.unlock();
       globalControl.contextTraced++;
       break;
     }
@@ -308,41 +440,98 @@ printActivity(CUpti_Activity *record)
       CUpti_ActivityMemcpy5 *memcpy = (CUpti_ActivityMemcpy5 *) record;
       printf("MEMCPY %s [ %llu - %llu ] device %u, context %u, stream %u, size %llu, correlation %u\n",
               getMemcpyKindString((CUpti_ActivityMemcpyKind)memcpy->copyKind),
-              (unsigned long long) (memcpy->start - startTimestamp),
-              (unsigned long long) (memcpy->end - startTimestamp),
+              (unsigned long long) (memcpy->start - startTimestamp1),
+              (unsigned long long) (memcpy->end - startTimestamp1),
               memcpy->deviceId, memcpy->contextId, memcpy->streamId,
               (unsigned long long)memcpy->bytes, memcpy->correlationId);
+
+      std::ostringstream out_memcpy_info;
+      out_memcpy_info << "MEMCPY " << getMemcpyKindString((CUpti_ActivityMemcpyKind)memcpy->copyKind)
+      << "[ "
+      <<((unsigned long long) (memcpy->start - startTimestamp1))
+      <<" - "
+      <<((unsigned long long) (memcpy->end - startTimestamp1))
+      <<" ] device "<<memcpy->deviceId<<", context "<<memcpy->contextId
+      <<", stream "<<memcpy->streamId<<", size "<<((unsigned long long)memcpy->bytes)
+      <<", correlation "<<memcpy->correlationId<<"\n";
+
+      std::string result = out_memcpy_info.str();
+      globalControl.trace_data_mutex.lock();
+      globalControl.tracingOutBuffer.push_back(result);
+      globalControl.trace_data_mutex.unlock();
       globalControl.memcpyTraced++;
       break;
     }
   case CUPTI_ACTIVITY_KIND_MEMSET:
     {
       CUpti_ActivityMemset4 *memset = (CUpti_ActivityMemset4 *) record;
-      printf("MEMSET value=%u [ %llu - %llu ] device %u, context %u, stream %u, correlation %u\n",
+      printf("MEMSET value=%u [ %llu - %llu ] device %u, context %u, stream %u, size %llu correlation %u\n",
              memset->value,
-             (unsigned long long) (memset->start - startTimestamp),
-             (unsigned long long) (memset->end - startTimestamp),
-             memset->deviceId, memset->contextId, memset->streamId,
+            ((unsigned long long) (memset->start - startTimestamp1)),
+             ((unsigned long long) (memset->end - startTimestamp1)),
+             memset->deviceId, memset->contextId, memset->streamId,(unsigned long long)memset->bytes,
              memset->correlationId);
+      std::ostringstream out_memset_info;
+      out_memset_info << "MEMSET value=" << memset->value
+      << "[ "
+      <<((unsigned long long) (memset->start - startTimestamp1))
+      <<" - "
+      <<((unsigned long long) (memset->end - startTimestamp1))
+      <<" ] device "<<memset->deviceId<<", context "<<memset->contextId
+      <<", stream "<<memset->streamId
+      <<", size "<<((unsigned long long)memset->bytes)
+      <<", correlation "<<memset->correlationId<<"\n";
+
+      std::string result = out_memset_info.str();
+      globalControl.trace_data_mutex.lock();
+      globalControl.tracingOutBuffer.push_back(result);
+      globalControl.trace_data_mutex.unlock();
       globalControl.memsetTraced++;
       break;
     }
   case CUPTI_ACTIVITY_KIND_KERNEL:
   case CUPTI_ACTIVITY_KIND_CONCURRENT_KERNEL:
+    //  - startTimestamp1
+    // - startTimestamp1
     {
       const char* kindString = (record->kind == CUPTI_ACTIVITY_KIND_KERNEL) ? "KERNEL" : "CONC KERNEL";
-      CUpti_ActivityKernel7 *kernel = (CUpti_ActivityKernel7 *) record;
+      CUpti_ActivityKernel8 *kernel = (CUpti_ActivityKernel8 *) record;
       printf("%s \"%s\" [ %llu - %llu ] device %u, context %u, stream %u, correlation %u\n",
              kindString,
              kernel->name,
-             (unsigned long long) (kernel->start - startTimestamp),
-             (unsigned long long) (kernel->end - startTimestamp),
+             (unsigned long long) (kernel->start),
+             (unsigned long long) (kernel->completed),
              kernel->deviceId, kernel->contextId, kernel->streamId,
              kernel->correlationId);
+
       printf("    grid [%u,%u,%u], block [%u,%u,%u], shared memory (static %u, dynamic %u)\n",
              kernel->gridX, kernel->gridY, kernel->gridZ,
              kernel->blockX, kernel->blockY, kernel->blockZ,
              kernel->staticSharedMemory, kernel->dynamicSharedMemory);
+      //       - startTimestamp1 - startTimestamp1
+      std::ostringstream out_kernel_info;
+      out_kernel_info << kindString
+      << "\""
+      <<kernel->name
+      <<"\" [ "
+      <<((unsigned long long) (kernel->start))
+      <<" - "
+      <<((unsigned long long) (kernel->completed))
+      <<" ] device "<<kernel->deviceId<<", context "<<kernel->contextId
+      <<", stream "<<kernel->streamId
+      <<", correlation "<<kernel->correlationId
+      <<", grid ["<<kernel->gridX<<","<<kernel->gridY<<","
+      <<kernel->gridZ<<"], block ["
+      <<kernel->blockX<<","<<kernel->blockY<<","<<kernel->blockZ<<"]"
+      <<", shared memory (static "<<kernel->staticSharedMemory
+      <<", dynamic "<<kernel->dynamicSharedMemory<<")\n";
+
+      std::string result = out_kernel_info.str();
+      globalControl.trace_data_mutex.lock();
+      globalControl.tracingOutBuffer.push_back(result);
+      globalControl.trace_data_mutex.unlock();
+
+
       globalControl.kernelsTraced++;
       break;
     }
@@ -351,9 +540,23 @@ printActivity(CUpti_Activity *record)
       CUpti_ActivityAPI *api = (CUpti_ActivityAPI *) record;
       printf("DRIVER cbid=%u [ %llu - %llu ] process %u, thread %u, correlation %u\n",
              api->cbid,
-             (unsigned long long) (api->start - startTimestamp),
-             (unsigned long long) (api->end - startTimestamp),
+             (unsigned long long) (api->start - startTimestamp1),
+             (unsigned long long) (api->end - startTimestamp1),
              api->processId, api->threadId, api->correlationId);
+      std::ostringstream out_driver_info;
+      out_driver_info<< "DRIVER cbid="
+      <<api->cbid
+      <<" [ "
+      <<((unsigned long long) (api->start - startTimestamp1))
+      <<" - "
+      <<((unsigned long long) (api->end - startTimestamp1))
+      <<" ] process "<<api->processId<<", thread "<<api->threadId
+      <<", correlation "<<api->correlationId<<"\n";
+
+      std::string result = out_driver_info.str();
+      globalControl.trace_data_mutex.lock();
+      globalControl.tracingOutBuffer.push_back(result);
+      globalControl.trace_data_mutex.unlock();
       globalControl.driverAPITraced++;
       break;
     }
@@ -362,9 +565,24 @@ printActivity(CUpti_Activity *record)
       CUpti_ActivityAPI *api = (CUpti_ActivityAPI *) record;
       printf("RUNTIME cbid=%u [ %llu - %llu ] process %u, thread %u, correlation %u\n",
              api->cbid,
-             (unsigned long long) (api->start - startTimestamp),
-             (unsigned long long) (api->end - startTimestamp),
+             (unsigned long long) (api->start - startTimestamp1),
+             (unsigned long long) (api->end - startTimestamp1),
              api->processId, api->threadId, api->correlationId);
+
+      std::ostringstream out_runtime_info;
+      out_runtime_info<< "RUNTIME cbid="
+      <<api->cbid
+      <<" [ "
+      <<((unsigned long long) (api->start - startTimestamp1))
+      <<" - "
+      <<((unsigned long long) (api->end - startTimestamp1))
+      <<" ] process "<<api->processId<<", thread "<<api->threadId
+      <<", correlation "<<api->correlationId<<"\n";
+
+      std::string result = out_runtime_info.str();
+      globalControl.trace_data_mutex.lock();
+      globalControl.tracingOutBuffer.push_back(result);
+      globalControl.trace_data_mutex.unlock();
         
       globalControl.runtimeAPITraced++;
       break;
@@ -373,6 +591,8 @@ printActivity(CUpti_Activity *record)
     {
       CUpti_ActivityName *name = (CUpti_ActivityName *) record;
       globalControl.objectTraced++;
+      std::ostringstream out_name_info;
+      std::string result;
       switch (name->objectKind)
       {
       case CUPTI_ACTIVITY_OBJECT_CONTEXT:
@@ -382,7 +602,22 @@ printActivity(CUpti_Activity *record)
                getActivityObjectKindString(CUPTI_ACTIVITY_OBJECT_DEVICE),
                getActivityObjectKindId(CUPTI_ACTIVITY_OBJECT_DEVICE, &name->objectId),
                name->name);
+
+        out_name_info<< "NAME "
+        <<getActivityObjectKindString(name->objectKind)<<" "
+        <<getActivityObjectKindId(name->objectKind, &name->objectId)<<" "
+        <<getActivityObjectKindString(CUPTI_ACTIVITY_OBJECT_DEVICE)<<" "
+        <<"id "<<getActivityObjectKindId(CUPTI_ACTIVITY_OBJECT_DEVICE, &name->objectId)<<", "
+        <<"name "<< name->name
+        <<"\n";
+
+        result = out_name_info.str();
+        globalControl.trace_data_mutex.lock();
+        globalControl.tracingOutBuffer.push_back(result);
+        globalControl.trace_data_mutex.unlock();
+
         break;
+
       case CUPTI_ACTIVITY_OBJECT_STREAM:
         printf("NAME %s %u %s %u %s id %u, name %s\n",
                getActivityObjectKindString(name->objectKind),
@@ -392,12 +627,40 @@ printActivity(CUpti_Activity *record)
                getActivityObjectKindString(CUPTI_ACTIVITY_OBJECT_DEVICE),
                getActivityObjectKindId(CUPTI_ACTIVITY_OBJECT_DEVICE, &name->objectId),
                name->name);
+
+
+        out_name_info<< "NAME "
+        <<getActivityObjectKindString(name->objectKind)<<" "
+        <<getActivityObjectKindId(name->objectKind, &name->objectId)<<" "
+        <<getActivityObjectKindString(CUPTI_ACTIVITY_OBJECT_CONTEXT)<<" "
+        <<getActivityObjectKindId(CUPTI_ACTIVITY_OBJECT_CONTEXT, &name->objectId)<<" "
+        <<getActivityObjectKindString(CUPTI_ACTIVITY_OBJECT_DEVICE)<<" "
+        <<"id "<<getActivityObjectKindId(CUPTI_ACTIVITY_OBJECT_DEVICE, &name->objectId)<<", "
+        <<"name "<< name->name
+        <<"\n";
+
+        result = out_name_info.str();
+        globalControl.trace_data_mutex.lock();
+        globalControl.tracingOutBuffer.push_back(result);
+        globalControl.trace_data_mutex.unlock();
+
         break;
       default:
         printf("NAME %s id %u, name %s\n",
                getActivityObjectKindString(name->objectKind),
                getActivityObjectKindId(name->objectKind, &name->objectId),
                name->name);
+
+        out_name_info<< "NAME "
+        <<getActivityObjectKindString(name->objectKind)<<" "
+        <<"id "<<getActivityObjectKindId(name->objectKind, &name->objectId)<<", "
+        <<"name "<< name->name
+        <<"\n";
+
+        result = out_name_info.str();
+        globalControl.trace_data_mutex.lock();
+        globalControl.tracingOutBuffer.push_back(result);
+        globalControl.trace_data_mutex.unlock();
         break;
       }
       break;
@@ -407,6 +670,19 @@ printActivity(CUpti_Activity *record)
       CUpti_ActivityMarker2 *marker = (CUpti_ActivityMarker2 *) record;
       printf("MARKER id %u [ %llu ], name %s, domain %s\n",
              marker->id, (unsigned long long) marker->timestamp, marker->name, marker->domain);
+      std::ostringstream out_marker_info;
+      out_marker_info<< "MARKER id "
+      <<marker->id<<" "
+      <<" [ "<<((unsigned long long) marker->timestamp)<<" ], name "
+      <<marker->name
+      <<", domain "
+      <<marker->domain
+      <<"\n";
+
+      std::string result = out_marker_info.str();
+      globalControl.trace_data_mutex.lock();
+      globalControl.tracingOutBuffer.push_back(result);
+      globalControl.trace_data_mutex.unlock();
       break;
     }
   case CUPTI_ACTIVITY_KIND_MARKER_DATA:
@@ -416,6 +692,20 @@ printActivity(CUpti_Activity *record)
              marker->id, marker->color, marker->category,
              (unsigned long long) marker->payload.metricValueUint64,
              marker->payload.metricValueDouble);
+      std::ostringstream out_marker_info;
+      out_marker_info<< "MARKER_DATA id "
+      <<marker->id<<" "
+      <<", color "<<marker->color<<", category "
+      <<marker->category
+      <<", payload "
+      <<((unsigned long long) marker->payload.metricValueUint64)
+      <<"/"<<marker->payload.metricValueDouble
+      <<"\n";
+
+      std::string result = out_marker_info.str();
+      globalControl.trace_data_mutex.lock();
+      globalControl.tracingOutBuffer.push_back(result);
+      globalControl.trace_data_mutex.unlock();
       break;
     }
   case CUPTI_ACTIVITY_KIND_OVERHEAD:
@@ -424,10 +714,25 @@ printActivity(CUpti_Activity *record)
       globalControl.overheadTraced;
       printf("OVERHEAD %s [ %llu, %llu ] %s id %u\n",
              getActivityOverheadKindString(overhead->overheadKind),
-             (unsigned long long) overhead->start - startTimestamp,
-             (unsigned long long) overhead->end - startTimestamp,
+             (unsigned long long) overhead->start - startTimestamp1,
+             (unsigned long long) overhead->end - startTimestamp1,
              getActivityObjectKindString(overhead->objectKind),
              getActivityObjectKindId(overhead->objectKind, &overhead->objectId));
+
+      std::ostringstream out_overhead_info;
+      out_overhead_info<< "OVERHEAD "
+      <<getActivityOverheadKindString(overhead->overheadKind)<<" "
+      <<"[ "<<(unsigned long long)((unsigned long long) overhead->start - startTimestamp1)<<", "
+      <<(unsigned long long)((unsigned long long) overhead->end - startTimestamp1)
+      <<" ] "
+      <<getActivityObjectKindString(overhead->objectKind)
+      <<" id "<<getActivityObjectKindId(overhead->objectKind, &overhead->objectId)
+      <<"\n";
+
+      std::string result = out_overhead_info.str();
+      globalControl.trace_data_mutex.lock();
+      globalControl.tracingOutBuffer.push_back(result);
+      globalControl.trace_data_mutex.unlock();
       break;
     }
   default:
@@ -500,7 +805,7 @@ cuptiInitialize(void) {
     CUPTI_CALL(cuptiActivityEnable(CUPTI_ACTIVITY_KIND_MEMSET));
     CUPTI_CALL(cuptiActivityEnable(CUPTI_ACTIVITY_KIND_NAME));
     CUPTI_CALL(cuptiActivityEnable(CUPTI_ACTIVITY_KIND_MARKER));
-    CUPTI_CALL(cuptiActivityEnable(CUPTI_ACTIVITY_KIND_KERNEL));
+//    CUPTI_CALL(cuptiActivityEnable(CUPTI_ACTIVITY_KIND_KERNEL));
     CUPTI_CALL(cuptiActivityEnable(CUPTI_ACTIVITY_KIND_CONCURRENT_KERNEL));
     CUPTI_CALL(cuptiActivityEnable(CUPTI_ACTIVITY_KIND_OVERHEAD));
 
@@ -528,7 +833,20 @@ cuptiInitialize(void) {
     printf("%s = %llu\n", "CUPTI_ACTIVITY_ATTR_DEVICE_BUFFER_POOL_LIMIT", (long long unsigned)attrValue);
     attrValue *= 2;
     CUPTI_CALL(cuptiActivitySetAttribute(CUPTI_ACTIVITY_ATTR_DEVICE_BUFFER_POOL_LIMIT, &attrValueSize,&attrValue));
-    CUPTI_CALL(cuptiGetTimestamp(&startTimestamp));
+    CUPTI_CALL(cuptiGetTimestamp(&startTimestamp1));
+    printf("CUPTI_START_TIMESTAMP = %llu\n",(unsigned long long)startTimestamp1);
+    std::ostringstream out_start_info;
+
+    out_start_info<< "CUPTI_START_TIMESTAMP = "
+    <<(unsigned long long)(startTimestamp1)
+    <<"\n";
+
+    std::string result = out_start_info.str();
+    globalControl.trace_data_mutex.lock();
+    globalControl.tracingOutBuffer.push_back(result);
+    globalControl.trace_data_mutex.unlock();
+
+
 
     return status;
 }
@@ -558,7 +876,7 @@ int InitializeTrace(void) {
     return 1;
 }
 
-void FiniTrace()
+void FiniTrace(string filepath)
 {
    // Force flush any remaining activity buffers before termination of the application
    CUPTI_CALL(cuptiActivityFlushAll(1));
@@ -569,13 +887,20 @@ void FiniTrace()
    CUPTI_CALL(cuptiActivityDisable(CUPTI_ACTIVITY_KIND_MEMSET));
    CUPTI_CALL(cuptiActivityDisable(CUPTI_ACTIVITY_KIND_NAME));
    CUPTI_CALL(cuptiActivityDisable(CUPTI_ACTIVITY_KIND_MARKER));
-   CUPTI_CALL(cuptiActivityDisable(CUPTI_ACTIVITY_KIND_KERNEL));
+//   CUPTI_CALL(cuptiActivityDisable(CUPTI_ACTIVITY_KIND_KERNEL));
    CUPTI_CALL(cuptiActivityDisable(CUPTI_ACTIVITY_KIND_CONCURRENT_KERNEL));
    CUPTI_CALL(cuptiActivityDisable(CUPTI_ACTIVITY_KIND_OVERHEAD));
    // cuptiActivityDisable(CUPTI_ACTIVITY_KIND_CONCURRENT_KERNEL)
    globalControl.detachCupti = 1;
    globalControl.terminateThread=1;
    globalControl.tracingEnabled = 0;
+   printSummary();
+   if (filepath.empty()){
+       std::cout<<"do not store results"<<std::endl;
+   }else{
+       store_tracing_results(filepath);
+   }
+
    CUPTI_CALL(cuptiFinalize());
 }
 

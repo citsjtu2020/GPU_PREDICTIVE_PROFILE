@@ -8,6 +8,7 @@
 #include "cuda_runtime_api.h"
 #include "cupti_target.h"
 #include "cupti_activity.h"
+//#include "generated_cuda_meta.h"
 
 #include <string>
 #include <stdio.h>
@@ -26,6 +27,11 @@
 //#include <stdlib.h>
 #include <Eval.h>
 using ::NV::Metric::Eval::PrintMetricValues;
+using ::NV::Metric::Eval::GetMetricGpuValue;
+using ::NV::Metric::Eval::MetricNameValue;
+
+
+
 
 #include <Metric.h>
 using ::NV::Metric::Config::GetConfigImage;
@@ -145,6 +151,17 @@ struct ProfilingData_t
 
 };
 
+
+struct CallbackKernelTimestamp_t{
+    string kernelName;
+    uint32_t contextId;
+    uint64_t startTimestamp;
+    uint64_t endTimestamp;
+    int64_t kernel_duration;
+    uint64_t rangeIndex;
+    uint64_t sessionIndex;
+};
+
 // Profiler API configuration data, per-context
 struct ctxProfilerData
 {
@@ -157,7 +174,8 @@ struct ctxProfilerData
     vector<uint8_t> counterDataPrefixImage;
     vector<uint8_t> counterDataScratchBufferImage;
     vector<uint8_t> configImage;
-    //    unordered_map<int,CallbackKernelTimestamp_t> kerneltime_data;
+
+    unordered_map<int,CallbackKernelTimestamp_t> kerneltime_data;
     int             maxNumRanges;
     int             curRanges;
     int             maxRangeNameLength;
@@ -167,15 +185,10 @@ struct ctxProfilerData
     bool            profile_enabled = false;
     int             iterations; // Count of Sessions
     bool allPassesSubmitted = true;
+
 };
 
-//struct CallbackKernelTimestamp_t{
-//    string kernelName;
-//    uint32_t contextId;
-//    uint64_t startTimestamp;
-//    uint64_t endTimestamp;
-//    uint64_t kernel_duration;
-//};
+
 
 //SimpleCupti.counterdata
 class GlobalProfilerControl_t{
@@ -274,9 +287,25 @@ profilingControlInit(int numRanges,int kernelPerRange,int numPassPerSess,string 
 // Print session profile data
 static void print_profile_data(ctxProfilerData &ctx_data)
 {
+    //PrintMetricValues( std::string chipName,
+//                                    const std::vector<uint8_t>& counterDataImage,
+//                                    const std::vector<std::string>& metricNames,
+//                                    int auto_range,
+//                                    unordered_map<int,std::string>& kernel_range_id_name,
+//                                    const uint8_t* pCounterAvailabilityImage
+//                                    )
+    unordered_map<int,string> kernel_range_id_name;
+    for(unordered_map<int,CallbackKernelTimestamp_t>::iterator it=ctx_data.kerneltime_data.begin();it!=ctx_data.kerneltime_data.end();it++){
+        CallbackKernelTimestamp_t* tmp_kernel_info = &it->second;
+        int rangeId = it->first;
+        string kernel_now_name = tmp_kernel_info->kernelName;
+        kernel_range_id_name[rangeId] = kernel_now_name;
+    }
+
     cout << endl << "Context " << ctx_data.ctx << ", device " << ctx_data.dev_id << " (" << ctx_data.chipName << ") session " << ctx_data.iterations << ":" << endl;
-    PrintMetricValues(ctx_data.chipName, ctx_data.counterDataImage, ProfilerControl.metricNames, ctx_data.counterAvailabilityImage.data());
+    PrintMetricValues(ctx_data.chipName, ctx_data.counterDataImage, ProfilerControl.metricNames,ProfilerControl.auto_range,kernel_range_id_name, ctx_data.counterAvailabilityImage.data());
     cout << endl;
+
 }
 
 // Print kernel trace data
@@ -328,8 +357,10 @@ void createCounterDataImage(int numRanges,int maxRangeNameLength,ctxProfilerData
     // Record counterDataPrefixImage info and other options for sizing the counterDataImage
     ctx_data.counterDataImageOptions.pCounterDataPrefix = ctx_data.counterDataPrefixImage.data();
     ctx_data.counterDataImageOptions.counterDataPrefixSize = ctx_data.counterDataPrefixImage.size();
-    ctx_data.counterDataImageOptions.maxNumRanges = numRanges;
-    ctx_data.counterDataImageOptions.maxNumRangeTreeNodes = numRanges;
+    if (numRanges > 1){
+        ctx_data.counterDataImageOptions.maxNumRanges = numRanges;
+        ctx_data.counterDataImageOptions.maxNumRangeTreeNodes = numRanges;
+    }
     ctx_data.counterDataImageOptions.maxRangeNameLength = maxRangeNameLength;
 
     // Calculate size of counterDataImage based on counterDataPrefixImage and options
@@ -422,9 +453,10 @@ bool beginSession(ctxProfilerData &ctx_data)
             beginSessionParams.range = CUPTI_UserRange;
             beginSessionParams.replayMode = CUPTI_UserReplay;
         }
-
-        beginSessionParams.maxRangesPerPass = ProfilerControl.numRanges;
-        beginSessionParams.maxLaunchesPerPass = ProfilerControl.numRanges;
+        if (ProfilerControl.numRanges > 1){
+            beginSessionParams.maxRangesPerPass = ProfilerControl.numRanges;
+            beginSessionParams.maxLaunchesPerPass = ProfilerControl.numRanges;
+        }
         CUPTI_API_CALL(cuptiProfilerBeginSession(&beginSessionParams));
 
         ctx_data.session_started = true;
@@ -671,15 +703,166 @@ bool store_profiling_results(ctxProfilerData &ctx_data){
         // device " << ctx_data.dev_id << " (" << ctx_data.dev_prop.name <<
         int dev_id = ctx_data.dev_id;
         string chipName = ctx_data.chipName;
+
         //        +"_"+chipName
-        string base_file_name = ProfilerControl.CounterDataFilePath + "/" + "profile_"+std::to_string(startTimestamp)+"_ctx_"+std::to_string(context_id)+"_sess_"+std::to_string(session_iter)+"_dev_"+std::to_string(dev_id);
-        string CounterDataFileName = base_file_name+".counterdata";
-        string CounterDataSBFileName = base_file_name+".counterdataSB";
+        string base_file_path = ProfilerControl.CounterDataFilePath + "/" + "profile_"+std::to_string(startTimestamp);
+        createDirectory(base_file_path);
+        base_file_path = base_file_path +"/"+"dev_"+std::to_string(dev_id)+"_ctx_"+std::to_string(context_id);
+        createDirectory(base_file_path);
+        string sess_file_path = base_file_path + "/" + "sess_"+std::to_string(session_iter);
+        createDirectory(sess_file_path);
+        // +"_sess_"+std::to_string(session_iter)
+        string CounterDataFileName = sess_file_path+"/"+"DataImage"+".counterdata";
+        string CounterDataSBFileName = sess_file_path+"/"+"DataImageBuffer"+".counterdataSB";
 
         WriteBinaryFile(CounterDataFileName.c_str(), ctx_data.counterDataImage);
         std::cout <<"Profile Data written successfully!" << std::endl;
         WriteBinaryFile(CounterDataSBFileName.c_str(), ctx_data.counterDataScratchBufferImage);
         std::cout <<"Profile Data Buffer written successfully!" << std::endl;
+
+        vector<MetricNameValue> metricNameValueMap;
+
+        //struct MetricNameValue
+        //{
+        //  std::string metricName;
+        //  int numRanges;
+        //  // <rangeName , metricValue> pair
+        //  std::vector < std::pair<std::string, double> > rangeNameMetricValueMap;
+        //};
+
+        int numRanges;
+
+        if(ProfilerControl.numRanges > 1){
+            numRanges = ProfilerControl.numRanges;
+        }else{
+            numRanges = 1;
+        }
+
+        int kernelPerRange = 1;
+        if (ProfilerControl.auto_range > 0){
+            kernelPerRange = 1;
+        }else{
+            kernelPerRange = ProfilerControl.kernelPerRange;
+        }
+
+        int numPassPerSess = ProfilerControl.numPassPerSess;
+
+        int maxNumRangeSess = numRanges*kernelPerRange*numPassPerSess;
+        int maxNumRangePass = numRanges*kernelPerRange;
+
+        uint32_t now_seesionId;
+        if (ctx_data.iterations > 0){
+            now_seesionId = (ctx_data.iterations-1);
+        }else{
+            now_seesionId = 0;
+        }
+
+        bool res = GetMetricGpuValue(ctx_data.chipName,ctx_data.counterDataImage,ProfilerControl.metricNames,metricNameValueMap,ctx_data.counterAvailabilityImage.data());
+
+        if (res){
+            string out_metric_res;
+            if(ProfilerControl.auto_range > 0){
+                out_metric_res = "session_id,range_id,launchId,kernel,metric_name,value\n";
+            }else{
+                out_metric_res = "session_id,range_name,metric_name,value\n";
+            }
+
+            for (auto itr = metricNameValueMap.begin(); itr != metricNameValueMap.end(); ++itr){
+                string tmp_metric_name = itr -> metricName;
+                vector<std::pair<std::string, double>> rangeNameMetricValueMap = itr -> rangeNameMetricValueMap;
+                for (size_t j=0;j<rangeNameMetricValueMap.size();++j){
+                    string rangeName = rangeNameMetricValueMap[j].first;
+                    double metricValue = rangeNameMetricValueMap[j].second;
+
+                    if (ProfilerControl.auto_range > 0){
+                        int rangeId = stringToIntWithoutSpaces(rangeName);
+                        string kernel_now_name;
+                        if(ctx_data.kerneltime_data.count(rangeId) > 0){
+                            kernel_now_name = ctx_data.kerneltime_data[rangeId].kernelName;
+                        }else{
+                            kernel_now_name = "<unknown>";
+                        }
+
+                        uint32_t now_launchId;
+                        if (maxNumRangeSess<=0){
+                            now_launchId = (uint32_t)now_seesionId+(uint32_t)rangeId;
+                        }else{
+                            now_launchId = (uint32_t)(now_seesionId * maxNumRangeSess)+(uint32_t)rangeId;
+                        }
+
+                        out_metric_res = out_metric_res + std::to_string(ctx_data.iterations)+","+std::to_string(rangeId)+","+std::to_string(now_launchId)+","+kernel_now_name+","+tmp_metric_name+","+std::to_string(metricValue);
+                        out_metric_res = out_metric_res + "\n";
+                    }else{
+                        out_metric_res = out_metric_res + std::to_string(ctx_data.iterations)+","+rangeName+","+tmp_metric_name+","+std::to_string(metricValue);
+                        out_metric_res = out_metric_res + "\n";
+                    }
+                }
+            }
+            string out_metric_aggr_name = sess_file_path+"/"+"metric_results"+".csv";
+
+            std::ofstream outFile(out_metric_aggr_name);
+
+            if (outFile.is_open()){
+                outFile << out_metric_res;
+                outFile.close();
+                std::cout <<"Metric Aggre Data written successfully!" << std::endl;
+            }else{
+                std::cerr<<"Unable to open file for writing."<<std::endl;
+                return false;
+            }
+        }else{
+            std::cout<<"Can Not save the aggre csv files"<<std::endl;
+        }
+
+
+
+        string kernel_info_res = "ctx_id,sess_id,range_id,launchId,kernel,start,end,duration\n";
+
+
+        for(auto it=ctx_data.kerneltime_data.begin();it!=ctx_data.kerneltime_data.end();it++){
+            // string kernelName;
+            // uint32_t contextId;
+            // uint64_t startTimestamp;
+            // uint64_t endTimestamp;
+            // int64_t kernel_duration;
+            // uint64_t rangeIndex;
+            // uint64_t sessionIndex;
+            CallbackKernelTimestamp_t* tk_info = &it->second;
+            int rangeId = it->first;
+            string kernel_now_name = tk_info->kernelName;
+
+            uint32_t now_launchId;
+            uint32_t kernel_session;
+
+            if(tk_info->sessionIndex < 1){
+                kernel_session = 0;
+            }else{
+                kernel_session = tk_info->sessionIndex - 1;
+            }
+            if (maxNumRangeSess<=0){
+                now_launchId = (uint32_t)kernel_session+(uint32_t)rangeId;
+            }else{
+                now_launchId = (uint32_t)(kernel_session * maxNumRangeSess)+(uint32_t)rangeId;
+            }
+
+            string tmp_tk_res = std::to_string(tk_info->contextId)+","+std::to_string(tk_info->sessionIndex)+","+std::to_string(rangeId)+","+std::to_string(now_launchId)+","+kernel_now_name+","+std::to_string(tk_info->startTimestamp)+","+std::to_string(tk_info->endTimestamp)+","+std::to_string(tk_info->kernel_duration);
+            tmp_tk_res = tmp_tk_res+"\n";
+
+            kernel_info_res = kernel_info_res+ tmp_tk_res;
+        }
+
+        string out_kernel_info_name = sess_file_path+"/"+"kernel_meta_results"+".csv";
+
+        std::ofstream outFile2(out_kernel_info_name);
+
+        if (outFile2.is_open()){
+            outFile2 << kernel_info_res;
+            outFile2.close();
+            std::cout <<"Kernel Meta Info written successfully!" << std::endl;
+        }else{
+            std::cerr<<"Unable to open file for writing."<<std::endl;
+            return false;
+        }
 
         return true;
     }else{
@@ -761,9 +944,9 @@ void cleanCounterDataImage(ctxProfilerData &ctx_data){
     CUPTI_API_CALL(cuptiProfilerCounterDataImageInitialize(&initializeParams));
 }
 
-//void cleanTraceData(ctxProfilerData &ctx_data){
-//    ctx_data.kerneltime_data.clear();
-//}
+void cleanKernelTraceData(ctxProfilerData &ctx_data){
+    ctx_data.kerneltime_data.clear();
+}
 
 // End a session during execution
 void end_session(ctxProfilerData &ctx_data)
@@ -787,6 +970,8 @@ void end_session(ctxProfilerData &ctx_data)
     print_profile_data(ctx_data);
     store_profiling_results(ctx_data);
     cleanCounterDataImage(ctx_data);
+    cleanKernelTraceData(ctx_data);
+
     //cleanTraceData(ctx_data);
 
 }
@@ -860,12 +1045,17 @@ void CallbackHandler(void * userdata, CUpti_CallbackDomain domain, CUpti_Callbac
     if (domain == CUPTI_CB_DOMAIN_DRIVER_API)
     {
         // For a driver call to launch a kernel:
-        if (cbid == CUPTI_DRIVER_TRACE_CBID_cuLaunchKernel)
-        {
+        if ((cbid == CUPTI_DRIVER_TRACE_CBID_cuLaunchKernel) || (cbid == CUPTI_DRIVER_TRACE_CBID_cuLaunchKernelEx)){
             cout<<endl<<"FIND DRIVER KERNEL LAUNCH"<<endl;
             CUpti_CallbackData const * data = static_cast<CUpti_CallbackData const *>(cbdata);
+
             CUcontext ctx = data->context;
             uint32_t ctxId = data->contextUid;
+            uint64_t kernelTraceTimestamp;
+
+
+
+            std::cout << "Launching kernel with function pointer: " << data->functionParams << std::endl;
 
             if (ProfilerControl.ctx_id.count(ctx) <= 0){
                 ProfilerControl.ctx_data_mutex.lock();
@@ -873,9 +1063,27 @@ void CallbackHandler(void * userdata, CUpti_CallbackDomain domain, CUpti_Callbac
                 ProfilerControl.ctx_data_mutex.unlock();
             }
             string kernelName;
-            kernelName = data->symbolName;
 
-            int numRanges = ProfilerControl.numRanges;
+            if(cbid == CUPTI_DRIVER_TRACE_CBID_cuLaunchKernelEx){
+                //  cuLaunchKernelEx_params const * fparam = static_cast<cuLaunchKernelEx_params const *>(cbdata);
+                cout<<endl<<"FIND DRIVER EX CALLBACK"<<endl;
+                kernelName = "<unknown>";
+
+            }
+            else{
+                cout<<endl<<"FIND DRIVER CALLBACK"<<endl;
+                kernelName = data->symbolName;
+            }
+
+
+
+            int numRanges;
+
+            if(ProfilerControl.numRanges > 1){
+                numRanges = ProfilerControl.numRanges;
+            }else{
+                numRanges = 1;
+            }
             int kernelPerRange = 1;
             if (ProfilerControl.auto_range > 0){
                 kernelPerRange = 1;
@@ -891,25 +1099,14 @@ void CallbackHandler(void * userdata, CUpti_CallbackDomain domain, CUpti_Callbac
 
 
             // On entry, enable / update profiling as needed
+
             if (data->callbackSite == CUPTI_API_ENTER)
             {
-                  //uint64_t kernelStartTimestamp;
-                  //uint64_t kernelEndTimestamp;
-                  //string kernelName;
-                  //uint32_t contextId;
-                  //uint64_t startTimestamp;
-                  //uint64_t endTimestamp;
-                  //uint64_t kernel_duration;
-                  //CallbackKernelTimestamp_t kernel_trace_data = { };
+                    //struct CallbackKernelTimestamp_t{
+
+                    //};
+
                   // Collect timestamp for API start
-                  //CUPTI_CALL(cuptiGetTimestamp(&kernelStartTimestamp));
-                  //kernel_trace_data.contextId = ctx_id;
-                  //kernel_trace_data.kernelName = kernelName;
-                  //kernel_trace_data.startTimestamp = kernelStartTimestamp
-                  ////traceData->startTimestamp = startTimestamp;
-                  //ProfilerControl.ctx_data_mutex.lock();
-                  //ProfilerControl.ctx_data[ctx].kerneltime_data[ProfilerControl.ctx_data[ctx].curRanges] = kernel_trace_data;
-                  //ProfilerControl.ctx_data_mutex.unlock();
 
 
                 // Check for this context in the configured contexts
@@ -934,11 +1131,24 @@ void CallbackHandler(void * userdata, CUpti_CallbackDomain domain, CUpti_Callbac
                     create_ctx_profile_env(cpro_data,ctx);
 
                 }
+                CUPTI_CALL(cuptiGetTimestamp(&kernelTraceTimestamp));
                 ProfilerControl.ctx_data_mutex.lock();
                 if (ProfilerControl.ctx_data.count(ctx) > 0)
                 {
+                    ////traceData->startTimestamp = startTimestamp;
+                    //string kernelName;
+                    //uint32_t contextId;
+                    //uint64_t startTimestamp;
+                    //uint64_t endTimestamp;
+                    //uint64_t kernel_duration;
+                    //uint64_t rangeIndex;
+                    //uint64_t sessionIndex;
+
+
+                    //ProfilerControl.ctx_data_mutex.unlock();
 
                     if (maxNumRangeSess >0){
+
                         if ((ProfilerControl.ctx_data[ctx].curRanges>0)){
                             if(((ProfilerControl.ctx_data[ctx].curRanges % maxNumRangePass)==0)&&(maxNumRangePass>1)){
                                 //disableProfiling(ctxProfilerData &ctx_data,bool end_pass,bool end_range,string rangeName)
@@ -947,9 +1157,13 @@ void CallbackHandler(void * userdata, CUpti_CallbackDomain domain, CUpti_Callbac
                                 disableProfiling(ProfilerControl.ctx_data[ctx],false,true,"");
                             }
                             if ((ProfilerControl.ctx_data[ctx].curRanges % maxNumRangeSess)==0){
-                                end_session(ProfilerControl.ctx_data[ctx]);
+                                if (ProfilerControl.ctx_data[ctx].session_started){
+                                    end_session(ProfilerControl.ctx_data[ctx]);
+                                    ProfilerControl.ctx_data[ctx].curRanges = 0;
+                                }
                             }
                         }
+
                         string range_name = kernelName + "_" + std::to_string(ProfilerControl.ctx_data[ctx].curRanges);
                         if ((ProfilerControl.ctx_data[ctx].curRanges % maxNumRangeSess)==0||(ProfilerControl.ctx_data[ctx].session_started==false)){
                             start_session(ProfilerControl.ctx_data[ctx],range_name);
@@ -962,6 +1176,19 @@ void CallbackHandler(void * userdata, CUpti_CallbackDomain domain, CUpti_Callbac
                         else if((ProfilerControl.ctx_data[ctx].curRanges % kernelPerRange)==0){
                             enableProfiling(ProfilerControl.ctx_data[ctx],false,true,range_name);
                         }
+
+                        CallbackKernelTimestamp_t kernel_trace_data = { };
+                        kernel_trace_data.contextId = ctxId;
+                        kernel_trace_data.kernelName = kernelName;
+                        kernel_trace_data.startTimestamp = (uint64_t)(kernelTraceTimestamp - startTimestamp);
+
+                        kernel_trace_data.rangeIndex = ProfilerControl.ctx_data[ctx].curRanges;
+
+
+                        kernel_trace_data.sessionIndex = ProfilerControl.ctx_data[ctx].iterations;
+
+                        //ProfilerControl.ctx_data_mutex.lock();
+                        ProfilerControl.ctx_data[ctx].kerneltime_data[ProfilerControl.ctx_data[ctx].curRanges] = kernel_trace_data;
 
                     }else{
                         if((ProfilerControl.ctx_data[ctx].curRanges>0)){
@@ -987,14 +1214,53 @@ void CallbackHandler(void * userdata, CUpti_CallbackDomain domain, CUpti_Callbac
                         else if((ProfilerControl.ctx_data[ctx].curRanges % kernelPerRange)==0){
                               enableProfiling(ProfilerControl.ctx_data[ctx],false,true,range_name);
                         }
+
+                        CallbackKernelTimestamp_t kernel_trace_data = { };
+                        kernel_trace_data.contextId = ctxId;
+                        kernel_trace_data.kernelName = kernelName;
+                        kernel_trace_data.startTimestamp = (uint64_t)(kernelTraceTimestamp - startTimestamp);
+
+                        kernel_trace_data.rangeIndex = ProfilerControl.ctx_data[ctx].curRanges;
+
+
+                        kernel_trace_data.sessionIndex = ProfilerControl.ctx_data[ctx].iterations;
+
+                        //ProfilerControl.ctx_data_mutex.lock();
+                        ProfilerControl.ctx_data[ctx].kerneltime_data[ProfilerControl.ctx_data[ctx].curRanges] = kernel_trace_data;
+
+
                         //else{
                         //      enableProfiling(ProfilerControl.ctx_data[ctx],false,false,range_name)
                         //}
                     }
+
                     // Increment curRanges
                     ProfilerControl.ctx_data[ctx].curRanges++;
                 }
                 ProfilerControl.ctx_data_mutex.unlock();
+            }else{
+
+                if (ProfilerControl.ctx_data.count(ctx) > 0){
+                    // ProfilerControl.ctx_data[ctx].kerneltime_data[ProfilerControl.ctx_data[ctx].curRanges]
+                    if (ProfilerControl.ctx_data[ctx].kerneltime_data.count((ProfilerControl.ctx_data[ctx].curRanges-1))>0){
+                        CUPTI_CALL(cuptiGetTimestamp(&kernelTraceTimestamp));
+                        ProfilerControl.ctx_data_mutex.lock();
+                        CallbackKernelTimestamp_t tmp_data = ProfilerControl.ctx_data[ctx].kerneltime_data[ProfilerControl.ctx_data[ctx].curRanges-1];
+                        ////traceData->startTimestamp = startTimestamp;
+                        //string kernelName;
+                        //uint32_t contextId;
+                        //uint64_t startTimestamp;
+                        //uint64_t endTimestamp;
+                        //uint64_t kernel_duration;
+                        //uint64_t rangeIndex;
+                        //uint64_t sessionIndex;
+                        tmp_data.endTimestamp = (uint64_t)(kernelTraceTimestamp - startTimestamp);
+                        tmp_data.kernel_duration = (int64_t)(tmp_data.endTimestamp - tmp_data.startTimestamp);
+                        ProfilerControl.ctx_data[ctx].kerneltime_data[ProfilerControl.ctx_data[ctx].curRanges-1] = tmp_data;
+                        ProfilerControl.ctx_data_mutex.unlock();
+                    }
+                }
+
             }
         }
     }
@@ -1040,7 +1306,7 @@ static void end_execution()
 
     for (auto itr = ProfilerControl.ctx_data.begin(); itr != ProfilerControl.ctx_data.end(); ++itr)
     {
-        ctxProfilerData &data = itr->second;
+        ctxProfilerData data = itr->second;
 
 //        if (data.ran)
         if (data.session_started)
@@ -1062,6 +1328,7 @@ void register_callbacks()
     CUPTI_API_CALL(cuptiSubscribe(&ProfilerControl.subscriber, (CUpti_CallbackFunc)CallbackHandler, NULL));
     // Runtime callback domain is needed for kernel launch callbacks
     CUPTI_API_CALL(cuptiEnableCallback(1, ProfilerControl.subscriber, CUPTI_CB_DOMAIN_DRIVER_API, CUPTI_DRIVER_TRACE_CBID_cuLaunchKernel));
+    CUPTI_API_CALL(cuptiEnableCallback(1, ProfilerControl.subscriber, CUPTI_CB_DOMAIN_DRIVER_API, CUPTI_DRIVER_TRACE_CBID_cuLaunchKernelEx));
     // Resource callback domain is needed for context creation callbacks
     CUPTI_API_CALL(cuptiEnableCallback(1, ProfilerControl.subscriber, CUPTI_CB_DOMAIN_RESOURCE, CUPTI_CBID_RESOURCE_CONTEXT_CREATED));
 
@@ -1069,13 +1336,22 @@ void register_callbacks()
     atexit(end_execution);
 }
 
-bool InitialCallbackProfiler(int numRanges=10,int kernelPerRange=1,int numPassPerSess=-1,string outputPath="profile_results",string inputMetric="smsp__sass_thread_inst_executed_op_dfma_pred_on.sum",int autoRange=1,int kernelReplay=1){
+string InitialCallbackProfiler(int numRanges=10,int kernelPerRange=1,int numPassPerSess=-1,string outputPath="profile_results",string inputMetric="smsp__sass_thread_inst_executed_op_dfma_pred_on.sum",int autoRange=1,int kernelReplay=1,uint64_t base_start=0){
 
     profilingControlInit(numRanges,kernelPerRange,numPassPerSess,outputPath,inputMetric,autoRange,kernelReplay);
-    CUPTI_CALL(cuptiGetTimestamp(&startTimestamp));
+    if (base_start < 1){
+        CUPTI_CALL(cuptiGetTimestamp(&startTimestamp));
+    }else{
+        CUPTI_CALL(cuptiGetTimestamp(&startTimestamp));
+    }
+
     register_callbacks();
 
-    return true;
+    uint64_t out_timestamp = startTimestamp;
+
+    string base_file_path = ProfilerControl.CounterDataFilePath + "/" + "profile_"+std::to_string(startTimestamp);
+
+    return base_file_path;
 
 
 }
@@ -1097,3 +1373,7 @@ PYBIND11_MODULE(async_cupti_profile, m){
     m.def("FinalizeCallbackProfiler",&FinalizeCallbackProfiler,"A function which destories a callback profiling procedure");
     // m.def("inadd", &inadd, "cin and cout");
 }
+
+////cbid == CUPTI_DRIVER_TRACE_CBID_cuLaunchKernelEx
+//CUpti_CallbackData const * data = static_cast<CUpti_CallbackData const *>(cbdata)
+//data->symbolName

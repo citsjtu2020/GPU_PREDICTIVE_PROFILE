@@ -1,0 +1,54 @@
+op_type,name,num_downstream,num_upstream,downstream,upstream,target,default_val,args,kwargs,module_qualname,detailed_op
+placeholder,x,1,0,[stage1_0_0],[],x,,(),{},,
+call_module,stage1_0_0,1,1,[stage1_0_1],[x],stage1.0.0,,"(%x,)",{},stage1.0.0,"Conv2d(3, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))"
+call_module,stage1_0_1,1,1,[stage1_0_2],[stage1_0_0],stage1.0.1,,"(%stage1_0_0,)",{},stage1.0.1,"BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)"
+call_module,stage1_0_2,1,1,[stage1_1_0],[stage1_0_1],stage1.0.2,,"(%stage1_0_1,)",{},stage1.0.2,ReLU6(inplace=True)
+call_module,stage1_1_0,1,1,[stage1_1_1],[stage1_0_2],stage1.1.0,,"(%stage1_0_2,)",{},stage1.1.0,"Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))"
+call_module,stage1_1_1,1,1,[stage1_1_2],[stage1_1_0],stage1.1.1,,"(%stage1_1_0,)",{},stage1.1.1,"BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)"
+call_module,stage1_1_2,1,1,[stage1_2],[stage1_1_1],stage1.1.2,,"(%stage1_1_1,)",{},stage1.1.2,ReLU6(inplace=True)
+call_module,stage1_2,1,1,[stage2_0_0],[stage1_1_2],stage1.2,,"(%stage1_1_2,)",{},stage1.2,"MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)"
+call_module,stage2_0_0,1,1,[stage2_0_1],[stage1_2],stage2.0.0,,"(%stage1_2,)",{},stage2.0.0,"Conv2d(64, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))"
+call_module,stage2_0_1,1,1,[stage2_0_2],[stage2_0_0],stage2.0.1,,"(%stage2_0_0,)",{},stage2.0.1,"BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)"
+call_module,stage2_0_2,1,1,[stage2_1_0],[stage2_0_1],stage2.0.2,,"(%stage2_0_1,)",{},stage2.0.2,ReLU6(inplace=True)
+call_module,stage2_1_0,1,1,[stage2_1_1],[stage2_0_2],stage2.1.0,,"(%stage2_0_2,)",{},stage2.1.0,"Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))"
+call_module,stage2_1_1,1,1,[stage2_1_2],[stage2_1_0],stage2.1.1,,"(%stage2_1_0,)",{},stage2.1.1,"BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)"
+call_module,stage2_1_2,1,1,[stage2_2],[stage2_1_1],stage2.1.2,,"(%stage2_1_1,)",{},stage2.1.2,ReLU6(inplace=True)
+call_module,stage2_2,1,1,[stage3_0_0],[stage2_1_2],stage2.2,,"(%stage2_1_2,)",{},stage2.2,"MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)"
+call_module,stage3_0_0,1,1,[stage3_0_1],[stage2_2],stage3.0.0,,"(%stage2_2,)",{},stage3.0.0,"Conv2d(128, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))"
+call_module,stage3_0_1,1,1,[stage3_0_2],[stage3_0_0],stage3.0.1,,"(%stage3_0_0,)",{},stage3.0.1,"BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)"
+call_module,stage3_0_2,1,1,[stage3_1_0],[stage3_0_1],stage3.0.2,,"(%stage3_0_1,)",{},stage3.0.2,ReLU6(inplace=True)
+call_module,stage3_1_0,1,1,[stage3_1_1],[stage3_0_2],stage3.1.0,,"(%stage3_0_2,)",{},stage3.1.0,"Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))"
+call_module,stage3_1_1,1,1,[stage3_1_2],[stage3_1_0],stage3.1.1,,"(%stage3_1_0,)",{},stage3.1.1,"BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)"
+call_module,stage3_1_2,1,1,[stage3_2_0],[stage3_1_1],stage3.1.2,,"(%stage3_1_1,)",{},stage3.1.2,ReLU6(inplace=True)
+call_module,stage3_2_0,1,1,[stage3_2_1],[stage3_1_2],stage3.2.0,,"(%stage3_1_2,)",{},stage3.2.0,"Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))"
+call_module,stage3_2_1,1,1,[stage3_2_2],[stage3_2_0],stage3.2.1,,"(%stage3_2_0,)",{},stage3.2.1,"BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)"
+call_module,stage3_2_2,1,1,[stage3_3],[stage3_2_1],stage3.2.2,,"(%stage3_2_1,)",{},stage3.2.2,ReLU6(inplace=True)
+call_module,stage3_3,1,1,[stage4_0_0],[stage3_2_2],stage3.3,,"(%stage3_2_2,)",{},stage3.3,"MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)"
+call_module,stage4_0_0,1,1,[stage4_0_1],[stage3_3],stage4.0.0,,"(%stage3_3,)",{},stage4.0.0,"Conv2d(256, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))"
+call_module,stage4_0_1,1,1,[stage4_0_2],[stage4_0_0],stage4.0.1,,"(%stage4_0_0,)",{},stage4.0.1,"BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)"
+call_module,stage4_0_2,1,1,[stage4_1_0],[stage4_0_1],stage4.0.2,,"(%stage4_0_1,)",{},stage4.0.2,ReLU6(inplace=True)
+call_module,stage4_1_0,1,1,[stage4_1_1],[stage4_0_2],stage4.1.0,,"(%stage4_0_2,)",{},stage4.1.0,"Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))"
+call_module,stage4_1_1,1,1,[stage4_1_2],[stage4_1_0],stage4.1.1,,"(%stage4_1_0,)",{},stage4.1.1,"BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)"
+call_module,stage4_1_2,1,1,[stage4_2_0],[stage4_1_1],stage4.1.2,,"(%stage4_1_1,)",{},stage4.1.2,ReLU6(inplace=True)
+call_module,stage4_2_0,1,1,[stage4_2_1],[stage4_1_2],stage4.2.0,,"(%stage4_1_2,)",{},stage4.2.0,"Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))"
+call_module,stage4_2_1,1,1,[stage4_2_2],[stage4_2_0],stage4.2.1,,"(%stage4_2_0,)",{},stage4.2.1,"BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)"
+call_module,stage4_2_2,1,1,[stage4_3],[stage4_2_1],stage4.2.2,,"(%stage4_2_1,)",{},stage4.2.2,ReLU6(inplace=True)
+call_module,stage4_3,1,1,[stage5_0_0],[stage4_2_2],stage4.3,,"(%stage4_2_2,)",{},stage4.3,"MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)"
+call_module,stage5_0_0,1,1,[stage5_0_1],[stage4_3],stage5.0.0,,"(%stage4_3,)",{},stage5.0.0,"Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))"
+call_module,stage5_0_1,1,1,[stage5_0_2],[stage5_0_0],stage5.0.1,,"(%stage5_0_0,)",{},stage5.0.1,"BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)"
+call_module,stage5_0_2,1,1,[stage5_1_0],[stage5_0_1],stage5.0.2,,"(%stage5_0_1,)",{},stage5.0.2,ReLU6(inplace=True)
+call_module,stage5_1_0,1,1,[stage5_1_1],[stage5_0_2],stage5.1.0,,"(%stage5_0_2,)",{},stage5.1.0,"Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))"
+call_module,stage5_1_1,1,1,[stage5_1_2],[stage5_1_0],stage5.1.1,,"(%stage5_1_0,)",{},stage5.1.1,"BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)"
+call_module,stage5_1_2,1,1,[stage5_2_0],[stage5_1_1],stage5.1.2,,"(%stage5_1_1,)",{},stage5.1.2,ReLU6(inplace=True)
+call_module,stage5_2_0,1,1,[stage5_2_1],[stage5_1_2],stage5.2.0,,"(%stage5_1_2,)",{},stage5.2.0,"Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))"
+call_module,stage5_2_1,1,1,[stage5_2_2],[stage5_2_0],stage5.2.1,,"(%stage5_2_0,)",{},stage5.2.1,"BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)"
+call_module,stage5_2_2,1,1,[stage5_3],[stage5_2_1],stage5.2.2,,"(%stage5_2_1,)",{},stage5.2.2,ReLU6(inplace=True)
+call_module,stage5_3,2,1,"[size,view]",[stage5_2_2],stage5.3,,"(%stage5_2_2,)",{},stage5.3,"MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)"
+call_method,size,1,1,[view],[stage5_3],size,,"(%stage5_3, 0)",{},,
+call_method,view,1,2,[classifier_0],"[stage5_3,size]",view,,"(%stage5_3, %size, -1)",{},,
+call_module,classifier_0,1,1,[classifier_1],[view],classifier.0,,"(%view,)",{},classifier.0,"Linear(in_features=25088, out_features=4096, bias=True)"
+call_module,classifier_1,1,1,[classifier_2],[classifier_0],classifier.1,,"(%classifier_0,)",{},classifier.1,"Dropout(p=0.2, inplace=False)"
+call_module,classifier_2,1,1,[classifier_3],[classifier_1],classifier.2,,"(%classifier_1,)",{},classifier.2,"Linear(in_features=4096, out_features=4096, bias=True)"
+call_module,classifier_3,1,1,[classifier_4],[classifier_2],classifier.3,,"(%classifier_2,)",{},classifier.3,"Dropout(p=0.2, inplace=False)"
+call_module,classifier_4,1,1,[output],[classifier_3],classifier.4,,"(%classifier_3,)",{},classifier.4,"Linear(in_features=4096, out_features=1000, bias=True)"
+output,output,0,1,[],[classifier_4],output fclassifier_4,,"((classifier_4,))",{},,

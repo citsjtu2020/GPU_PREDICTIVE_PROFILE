@@ -4,6 +4,8 @@ import torchvision
 import async_cupti_trace
 import async_cupti_profile
 
+import async_cupti_trace_for_pro
+
 
 def Conv3x3BNReLU(in_channels,out_channels):
     return nn.Sequential(
@@ -77,11 +79,47 @@ if __name__ == '__main__':
     torchvision.models.vgg16_bn()
     # InitialCallbackProfiler(int numRanges=10,int kernelPerRange=1,int numPassPerSess=-1,string outputPath="profile_results",
     # string inputMetric="smsp__sass_thread_inst_executed_op_dfma_pred_on.sum",int autoRange=1,int kernelReplay=1)
-    async_cupti_profile.InitialCallbackProfiler(5,1,-1,"sampleCUPTI",
-                                                "smsp__inst_executed.avg.per_cycle_active",1,1)
+    #async_cupti_trace.InitializeTrace()
+    # out_path = async_cupti_profile.InitialCallbackProfiler(10,
+    #                                             1,1,
+    #                                             "sampleCUPTI_profile_ex_new",
+    #                                             "smsp__sass_thread_inst_executed_op_ffma_pred_on.sum,smsp__sass_thread_inst_executed_op_fadd_pred_on.sum,smsp__sass_thread_inst_executed_op_fmul_pred_on.sum,smsp__sass_thread_inst_executed_op_fp32_pred_on.sum,smsp__sass_thread_inst_executed_op_hfma_pred_on.sum,smsp__sass_thread_inst_executed_op_hadd_pred_on.sum,smsp__sass_thread_inst_executed_op_hmul_pred_on.sum,smsp__sass_thread_inst_executed_op_fp16_pred_on.sum,smsp__sass_thread_inst_executed_op_dfma_pred_on.sum,smsp__sass_thread_inst_executed_op_dadd_pred_on.sum,smsp__sass_thread_inst_executed_op_dmul_pred_on.sum,smsp__sass_thread_inst_executed_op_fp64_pred_on.sum",
+    #                                                        1,1,0)
+    # smsp__inst_executed_pipe_tensor_op_hmma,smsp__inst_executed_pipe_tensor_op_dmma,smsp__inst_executed_pipe_tensor_op_imma
+    out_path = async_cupti_profile.InitialCallbackProfiler(10,
+                                                1,1,
+                                                "sampleCUPTI_profile_ex_sm_smsp_add",
+                                                "smsp__pipe_fma_cycles_active.sum,smsp__pipe_fma_cycles_active.avg,smsp__pipe_fma_cycles_active.avg.pct_of_peak_sustained_active,smsp__pipe_fp64_cycles_active.sum,smsp__pipe_fp64_cycles_active.avg,smsp__pipe_fp64_cycles_active.avg.pct_of_peak_sustained_active,sm__pipe_tensor_op_hmma_cycles_active.avg,sm__pipe_tensor_op_hmma_cycles_active.sum,sm__pipe_tensor_op_hmma_cycles_active.avg.pct_of_peak_sustained_active,sm__pipe_tensor_op_imma_cycles_active.avg,sm__pipe_tensor_op_imma_cycles_active.sum,sm__pipe_tensor_op_imma_cycles_active.avg.pct_of_peak_sustained_active",
+                                                # "smsp__inst_executed.avg.per_cycle_active,smsp__inst_executed.sum,smsp__inst_executed_pipe_fma.sum,smsp__inst_executed_pipe_fp64.sum,smsp__inst_executed_pipe_fp64.avg.pct_of_peak_sustained_active,smsp__inst_executed_pipe_fma.avg.pct_of_peak_sustained_active,sm__cycles_elapsed.avg,sm__cycles_active.avg,sm__cycles_active.avg.pct_of_peak_sustained_elapsed,sm__pipe_tensor_cycles_active.avg,sm__pipe_tensor_cycles_active.avg.pct_of_peak_sustained_active,sm__pipe_tensor_cycles_active.sum,sm__pipe_tensor_cycles_active.avg,smsp__sass_thread_inst_executed_op_ffma_pred_on.sum,smsp__sass_thread_inst_executed_op_fadd_pred_on.sum,smsp__sass_thread_inst_executed_op_fmul_pred_on.sum,smsp__sass_thread_inst_executed_op_fp32_pred_on.sum,smsp__sass_thread_inst_executed_op_hfma_pred_on.sum,smsp__sass_thread_inst_executed_op_hadd_pred_on.sum,smsp__sass_thread_inst_executed_op_hmul_pred_on.sum,smsp__sass_thread_inst_executed_op_fp16_pred_on.sum,smsp__sass_thread_inst_executed_op_dfma_pred_on.sum,smsp__sass_thread_inst_executed_op_dadd_pred_on.sum,smsp__sass_thread_inst_executed_op_dmul_pred_on.sum,smsp__sass_thread_inst_executed_op_fp64_pred_on.sum",
+                                                # "smsp__inst_executed_pipe_fp16.avg.pct_of_peak_sustained_active,",
+                                                #"sm__cycles_elapsed.avg,sm__cycles_active.avg,sm__cycles_active.avg.pct_of_peak_sustained_elapsed,sm__pipe_tensor_cycles_active.avg,sm__pipe_tensor_cycles_active.avg.pct_of_peak_sustained_active,smsp__pipe_tensor_cycles_active.sum,smsp__pipe_tensor_cycles_active.avg",
+                                                # sm__pipe_tensor_op_dmma.avg.pct_of_peak_sustained_active,smsp__inst_executed_pipe_tensor_op_imma.avg.pct_of_peak_sustained_active,smsp__inst_executed_pipe_tensor_op_hmma.avg.pct_of_peak_sustained_active
+                                                # "sm__inst_executed_pipe_tensor_op_dmma.sum,sm__inst_executed_pipe_tensor_op.sum,sm__inst_executed_pipe_tensor_op.avg.pct_of_peak_sustained_active",
+                                                           1,1,0)
+    # smsp__inst_executed.avg.per_cycle_active,smsp__inst_executed.sum,smsp__inst_executed_pipe_fma.sum,smsp__inst_executed_pipe_fp16.sum,smsp__inst_executed_pipe_fp64.sum,smsp__inst_executed_pipe_fp64.avg.pct_of_peak_sustained_active,smsp__pipe_fma_cycles_active.avg.pct_of_peak_sustained_active,smsp__inst_executed_pipe_fp16.avg.pct_of_peak_sustained_active,smsp__inst_executed_pipe_fma.avg.pct_of_peak_sustained_active
+    # sm__pipe_tensor_cycles_active.avg.pct_of_peak_sustained_active,sm__pipe_tensor_cycles_active.sum
+
+
     input = torch.randn(1,3,224,224)
     input.to(device="cuda:0")
     input = input.cuda()
     out = model(input)
-    async_cupti_profile.FinalizeCallbackProfiler()
+    try:
+        async_cupti_profile.FinalizeCallbackProfiler()
+    except Exception as ee:
+        print(ee)
+
+    async_cupti_trace_for_pro.InitializeTrace()
+
+    # input = torch.randn(1, 3, 224, 224)
+    # input.to(device="cuda:0")
+    # input = input.cuda()
+    out = model(input)
+    try:
+        async_cupti_trace_for_pro.FiniTrace(out_path)
+    except Exception as ee:
+        print(ee)
+
+
+    #async_cupti_trace.FiniTrace("trace_no_profiler_res2")
     print(out.shape)
