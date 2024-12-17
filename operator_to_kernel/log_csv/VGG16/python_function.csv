@@ -1,0 +1,883 @@
+ts,Python parent id,ph,Ev Idx,dur,tid,Python module id,pid,Python id,cat,name
+6083647114239.063,,X,364,14168.402,0,,0,1,python_function,threading.py(973): _bootstrap
+6083647114239.987,1,X,365,14167.478,0,,0,2,python_function,threading.py(1016): _bootstrap_inner
+6083647114242.035,2,X,366,14165.43,0,,0,3,python_function,decorator.py(232): fun
+6083647114242.723,3,X,367,14164.742,0,,0,4,python_function,IPython/core/history.py(61): only_when_enabled
+6083647114245.846,4,X,368,14161.619,0,,0,5,python_function,IPython/core/history.py(903): run
+6083647114246.686,5,X,369,14160.779,0,,0,6,python_function,threading.py(607): wait
+6083647114247.41,6,X,370,14160.055,0,,0,7,python_function,threading.py(320): wait
+6083647114251.571,7,X,371,14155.894,0,,0,8,python_function,threading.py(973): _bootstrap
+6083647114251.954,8,X,372,14155.511,0,,0,9,python_function,threading.py(1016): _bootstrap_inner
+6083647114254.643,9,X,373,14152.822,0,,0,10,python_function,ipykernel/control.py(23): run
+6083647114257.696,10,X,374,14149.769,0,,0,11,python_function,tornado/platform/asyncio.py(205): start
+6083647114260.919,11,X,375,14146.546,0,,0,12,python_function,asyncio/base_events.py(603): run_forever
+6083647114261.665,12,X,376,14145.8,0,,0,13,python_function,asyncio/base_events.py(1871): _run_once
+6083647114262.525,13,X,377,14144.94,0,,0,14,python_function,selectors.py(469): select
+6083647114264.507,14,X,378,14142.958,0,,0,15,python_function,threading.py(973): _bootstrap
+6083647114264.798,15,X,379,14142.667,0,,0,16,python_function,threading.py(1016): _bootstrap_inner
+6083647114265.629,16,X,380,14141.836,0,,0,17,python_function,threading.py(953): run
+6083647114266.635,17,X,381,14140.83,0,,0,18,python_function,ipykernel/iostream.py(387): _watch_pipe_fd
+6083647114269.803,18,X,382,14137.662,0,,0,19,python_function,threading.py(973): _bootstrap
+6083647114270.115,19,X,383,14137.35,0,,0,20,python_function,threading.py(1016): _bootstrap_inner
+6083647114270.677,20,X,384,14136.788,0,,0,21,python_function,threading.py(953): run
+6083647114270.967,21,X,385,14136.498,0,,0,22,python_function,ipykernel/iostream.py(387): _watch_pipe_fd
+6083647114273.563,22,X,386,14133.902,0,,0,23,python_function,threading.py(973): _bootstrap
+6083647114274.088,23,X,387,14133.377,0,,0,24,python_function,threading.py(1016): _bootstrap_inner
+6083647114276.745,24,X,388,14130.72,0,,0,25,python_function,ipykernel/heartbeat.py(106): run
+6083647114280.263,25,X,389,14127.202,0,,0,26,python_function,threading.py(973): _bootstrap
+6083647114280.516,26,X,390,14126.949,0,,0,27,python_function,threading.py(1016): _bootstrap_inner
+6083647114280.889,27,X,391,14126.576,0,,0,28,python_function,threading.py(953): run
+6083647114281.404,28,X,392,14126.061,0,,0,29,python_function,ipykernel/iostream.py(92): _thread_main
+6083647114282.202,29,X,393,14125.263,0,,0,30,python_function,tornado/platform/asyncio.py(205): start
+6083647114282.6,30,X,394,14124.865,0,,0,31,python_function,asyncio/base_events.py(603): run_forever
+6083647114283.099,31,X,395,14124.366,0,,0,32,python_function,asyncio/base_events.py(1871): _run_once
+6083647114283.546,32,X,396,14123.919,0,,0,33,python_function,selectors.py(469): select
+6083647114295.776,,X,397,14111.689,383547,,383547,34,python_function,runpy.py(196): _run_module_as_main
+6083647114298.61,34,X,398,14108.855,383547,,383547,35,python_function,runpy.py(86): _run_code
+6083647114299.659,35,X,399,14107.806,383547,,383547,36,python_function,ipykernel_launcher.py(18): <module>
+6083647114303.706,36,X,400,14103.759,383547,,383547,37,python_function,traitlets/config/application.py(1075): launch_instance
+6083647114307.111,37,X,401,14100.354,383547,,383547,38,python_function,ipykernel/kernelapp.py(739): start
+6083647114307.439,38,X,402,14100.026,383547,,383547,39,python_function,tornado/platform/asyncio.py(205): start
+6083647114307.853,39,X,403,14099.612,383547,,383547,40,python_function,asyncio/base_events.py(603): run_forever
+6083647114308.406,40,X,404,14099.059,383547,,383547,41,python_function,asyncio/base_events.py(1909): _run_once
+6083647114311.872,41,X,405,14095.593,383547,,383547,42,python_function,asyncio/events.py(80): _run
+6083647114312.794,42,X,406,14094.671,383547,,383547,43,python_function,ipykernel/kernelbase.py(545): dispatch_queue
+6083647114313.598,43,X,407,14093.867,383547,,383547,44,python_function,ipykernel/kernelbase.py(534): process_one
+6083647114314.378,44,X,408,14093.087,383547,,383547,45,python_function,ipykernel/kernelbase.py(437): dispatch_shell
+6083647114315.188,45,X,409,14092.277,383547,,383547,46,python_function,ipykernel/ipkernel.py(362): execute_request
+6083647114315.822,46,X,410,14091.643,383547,,383547,47,python_function,ipykernel/kernelbase.py(778): execute_request
+6083647114316.83,47,X,411,14090.635,383547,,383547,48,python_function,ipykernel/ipkernel.py(449): do_execute
+6083647114318.304,48,X,412,14089.161,383547,,383547,49,python_function,ipykernel/zmqshell.py(549): run_cell
+6083647114321.467,49,X,413,14085.998,383547,,383547,50,python_function,IPython/core/interactiveshell.py(3075): run_cell
+6083647114322.224,50,X,414,14085.241,383547,,383547,51,python_function,IPython/core/interactiveshell.py(3130): _run_cell
+6083647114329.66,51,X,415,14077.805,383547,,383547,52,python_function,IPython/core/async_helpers.py(128): _pseudo_sync_runner
+6083647114330.727,52,X,416,14076.738,383547,,383547,53,python_function,IPython/core/interactiveshell.py(3334): run_cell_async
+6083647114331.756,53,X,417,14075.709,383547,,383547,54,python_function,IPython/core/interactiveshell.py(3517): run_ast_nodes
+6083647114332.594,54,X,418,14074.871,383547,,383547,55,python_function,IPython/core/interactiveshell.py(3577): run_code
+6083647114335.179,55,X,419,14072.286,383547,,383547,56,python_function,/tmp/ipykernel_383547/1204266699.py(25): <module>
+6083647114335.923,56,X,420,361.411,383547,,383547,57,python_function,torch/profiler/profiler.py(776): step
+6083647114337.901,57,X,421,174.088,383547,,383547,58,python_function,torch/profiler/profiler.py(793): _transit_action
+6083647114339.525,58,X,422,171.75,383547,,383547,59,python_function,torch/profiler/profiler.py(174): start_trace
+6083647114341.157,59,X,423,38.112,383547,,383547,60,python_function,torch/autograd/profiler.py(339): _start_trace
+6083647114371.206,60,X,424,1.078,383547,,383547,61,python_function,<built-in function perf_counter_ns>
+6083647114386.429,59,X,425,12.387,383547,,383547,62,python_function,torch/profiler/profiler.py(304): add_metadata_json
+6083647114394.374,62,X,426,4.163,383547,,383547,63,python_function,<built-in method _add_metadata_json of PyCapsule object at 0x7f408de24fc0>
+6083647114399.865,59,X,427,1.215,383547,,383547,64,python_function,torch/profiler/profiler.py(304): add_metadata_json
+6083647114400.342,64,X,428,0.666,383547,,383547,65,python_function,<built-in method _add_metadata_json of PyCapsule object at 0x7f408de24fc0>
+6083647114404.925,59,X,429,0.901,383547,,383547,66,python_function,<built-in method kineto_available of PyCapsule object at 0x7f408de25020>
+6083647114407.586,59,X,430,41.207,383547,,383547,67,python_function,torch/profiler/profiler.py(319): _get_distributed_info
+6083647114414.94,67,X,431,7.031,383547,,383547,68,python_function,torch/distributed/__init__.py(14): is_available
+6083647114418.489,68,X,432,3.32,383547,,383547,69,python_function,<built-in function hasattr>
+6083647114428.373,67,X,433,20.081,383547,,383547,70,python_function,torch/distributed/distributed_c10d.py(1121): is_initialized
+6083647114443.228,70,X,434,5.0,383547,,383547,71,python_function,torch/distributed/distributed_c10d.py(705): WORLD
+6083647114447.513,71,X,435,0.517,383547,,383547,72,python_function,torch/distributed/distributed_c10d.py(576): default_pg
+6083647114451.196,59,X,436,2.064,383547,,383547,73,python_function,<built-in function hasattr>
+6083647114484.766,59,X,437,19.78,383547,,383547,74,python_function,torch/utils/_config_module.py(379): __getattr__
+6083647114495.373,74,X,438,8.717,383547,,383547,75,python_function,torch/utils/_config_module.py(148): __getattr__
+6083647114509.759,59,X,439,0.333,383547,,383547,76,python_function,<built-in method items of dict object at 0x7f408d0333c0>
+6083647114527.263,57,X,440,19.847,383547,,383547,77,python_function,torch/autograd/profiler.py(1141): increment_step
+6083647114534.358,77,X,441,0.398,383547,,383547,78,python_function,<built-in method values of collections.defaultdict object at 0x7f408de37ba0>
+6083647114536.624,77,X,442,0.92,383547,,383547,79,python_function,<built-in function max>
+6083647114543.124,77,X,443,2.685,383547,,383547,80,python_function,<built-in method _kineto_step of PyCapsule object at 0x7f408de24ff0>
+6083647114551.741,57,X,444,12.327,383547,,383547,81,python_function,torch/autograd/profiler.py(721): __init__
+6083647114557.177,81,X,445,3.328,383547,,383547,82,python_function,typing.py(306): inner
+6083647114563.237,81,X,446,0.405,383547,,383547,83,python_function,torch/jit/__init__.py(128): annotate
+6083647114569.445,57,X,447,127.419,383547,,383547,84,python_function,torch/autograd/profiler.py(732): __enter__
+6083647114574.759,84,X,448,121.356,383547,,383547,85,python_function,torch/_ops.py(1105): __call__
+6083647114579.246,85,X,449,116.555,383547,,383547,86,python_function,<built-in method _record_function_enter_new of PyCapsule object at 0x7f408d55aaf0>
+6083647114711.539,56,X,450,9753.584,383547,0,383547,87,python_function,nn.Module: VGG_0
+6083647114714.05,87,X,451,9750.12,383547,,383547,88,python_function,torch/nn/modules/module.py(1740): _call_impl
+6083647114717.241,88,X,452,1.297,383547,,383547,89,python_function,<built-in method _get_tracing_state of PyCapsule object at 0x7f41fc1f7a20>
+6083647114721.811,88,X,453,9741.933,383547,,383547,90,python_function,VGG.py(55): forward
+6083647114724.653,90,X,454,2.589,383547,,383547,91,python_function,torch/nn/modules/module.py(1918): __getattr__
+6083647114733.123,90,X,455,3528.864,383547,0,383547,92,python_function,nn.Module: Sequential_0
+6083647114734.51,92,X,456,3526.866,383547,,383547,93,python_function,torch/nn/modules/module.py(1740): _call_impl
+6083647114734.917,93,X,457,0.394,383547,,383547,94,python_function,<built-in method _get_tracing_state of PyCapsule object at 0x7f41fc1f7a20>
+6083647114737.025,93,X,458,3524.104,383547,,383547,95,python_function,torch/nn/modules/container.py(248): forward
+6083647114737.705,95,X,459,3.194,383547,,383547,96,python_function,torch/nn/modules/container.py(240): __iter__
+6083647114738.888,96,X,460,0.154,383547,,383547,97,python_function,<built-in method values of collections.defaultdict object at 0x7f408de37ba0>
+6083647114740.386,96,X,461,0.293,383547,,383547,98,python_function,<built-in function iter>
+6083647114745.978,95,X,462,2898.687,383547,1,383547,99,python_function,nn.Module: Sequential_1
+6083647114746.907,99,X,463,2897.082,383547,,383547,100,python_function,torch/nn/modules/module.py(1740): _call_impl
+6083647114747.279,100,X,464,0.381,383547,,383547,101,python_function,<built-in method _get_tracing_state of PyCapsule object at 0x7f41fc1f7a20>
+6083647114751.134,100,X,465,2892.467,383547,,383547,102,python_function,torch/nn/modules/container.py(248): forward
+6083647114751.43,102,X,466,1.007,383547,,383547,103,python_function,torch/nn/modules/container.py(240): __iter__
+6083647114751.897,103,X,467,0.065,383547,,383547,104,python_function,<built-in method values of collections.defaultdict object at 0x7f408de37ba0>
+6083647114752.182,103,X,468,0.174,383547,,383547,105,python_function,<built-in function iter>
+6083647114768.236,102,X,469,2385.013,383547,0,383547,106,python_function,nn.Module: Conv2d_0
+6083647114769.322,106,X,470,2382.533,383547,,383547,107,python_function,torch/nn/modules/module.py(1740): _call_impl
+6083647114769.683,107,X,471,0.385,383547,,383547,108,python_function,<built-in method _get_tracing_state of PyCapsule object at 0x7f41fc1f7a20>
+6083647114773.266,107,X,472,2377.854,383547,,383547,109,python_function,torch/nn/modules/conv.py(553): forward
+6083647114776.535,109,X,473,0.916,383547,,383547,110,python_function,torch/nn/modules/module.py(1918): __getattr__
+6083647114778.618,109,X,474,0.392,383547,,383547,111,python_function,torch/nn/modules/module.py(1918): __getattr__
+6083647114779.657,109,X,475,2370.427,383547,,383547,112,python_function,torch/nn/modules/conv.py(536): _conv_forward
+6083647114784.292,112,X,476,2365.111,383547,,383547,113,python_function,<built-in method conv2d of type object at 0x7f41e7e5f1c0>
+6083647117176.1,102,X,477,277.89,383547,0,383547,114,python_function,nn.Module: BatchNorm2d_0
+6083647117178.166,114,X,478,275.085,383547,,383547,115,python_function,torch/nn/modules/module.py(1740): _call_impl
+6083647117179.613,115,X,479,2.488,383547,,383547,116,python_function,<built-in method _get_tracing_state of PyCapsule object at 0x7f41fc1f7a20>
+6083647117187.056,115,X,480,265.763,383547,,383547,117,python_function,torch/nn/modules/batchnorm.py(159): forward
+6083647117189.157,117,X,481,7.872,383547,,383547,118,python_function,torch/nn/modules/batchnorm.py(450): _check_input_dim
+6083647117195.837,118,X,482,0.633,383547,,383547,119,python_function,<built-in method dim of Tensor object at 0x7f41663e0fe0>
+6083647117201.162,117,X,483,2.056,383547,,383547,120,python_function,torch/nn/modules/module.py(1918): __getattr__
+6083647117204.578,117,X,484,0.565,383547,,383547,121,python_function,torch/nn/modules/module.py(1918): __getattr__
+6083647117207.046,117,X,485,41.357,383547,,383547,122,python_function,<built-in method add_ of Tensor object at 0x7f408c6d2390>
+6083647117252.591,117,X,486,0.904,383547,,383547,123,python_function,torch/nn/modules/module.py(1918): __getattr__
+6083647117254.838,117,X,487,0.752,383547,,383547,124,python_function,torch/nn/modules/module.py(1918): __getattr__
+6083647117256.773,117,X,488,0.358,383547,,383547,125,python_function,torch/nn/modules/module.py(1918): __getattr__
+6083647117258.28,117,X,489,0.47,383547,,383547,126,python_function,torch/nn/modules/module.py(1918): __getattr__
+6083647117260.349,117,X,490,191.989,383547,,383547,127,python_function,torch/nn/functional.py(2781): batch_norm
+6083647117265.503,127,X,491,0.67,383547,,383547,128,python_function,<built-in function _has_torch_function_variadic>
+6083647117268.97,127,X,492,1.78,383547,,383547,129,python_function,<built-in method size of Tensor object at 0x7f41663e0fe0>
+6083647117271.466,127,X,493,11.299,383547,,383547,130,python_function,torch/nn/functional.py(2762): _verify_batch_size
+6083647117278.881,130,X,494,0.416,383547,,383547,131,python_function,<built-in function len>
+6083647117286.744,127,X,495,2.401,383547,,383547,132,python_function,torch/backends/__init__.py(38): __get__
+6083647117288.605,132,X,496,0.402,383547,,383547,133,python_function,<built-in function _get_cudnn_enabled>
+6083647117291.559,127,X,497,160.444,383547,,383547,134,python_function,<built-in method batch_norm of type object at 0x7f41e7e5f1c0>
+6083647117463.121,102,X,498,179.314,383547,0,383547,135,python_function,nn.Module: ReLU6_0
+6083647117464.693,135,X,499,177.112,383547,,383547,136,python_function,torch/nn/modules/module.py(1740): _call_impl
+6083647117465.399,136,X,500,1.732,383547,,383547,137,python_function,<built-in method _get_tracing_state of PyCapsule object at 0x7f41fc1f7a20>
+6083647117469.491,136,X,501,171.932,383547,,383547,138,python_function,torch/nn/modules/activation.py(268): forward
+6083647117473.307,138,X,502,167.66,383547,,383547,139,python_function,torch/nn/functional.py(1745): hardtanh
+6083647117475.352,139,X,503,0.398,383547,,383547,140,python_function,<built-in function _has_torch_function_unary>
+6083647117478.505,139,X,504,162.012,383547,,383547,141,python_function,<built-in function hardtanh_>
+6083647117651.356,95,X,505,506.163,383547,2,383547,142,python_function,nn.Module: Sequential_2
+6083647117652.744,142,X,506,504.137,383547,,383547,143,python_function,torch/nn/modules/module.py(1740): _call_impl
+6083647117653.366,143,X,507,1.71,383547,,383547,144,python_function,<built-in method _get_tracing_state of PyCapsule object at 0x7f41fc1f7a20>
+6083647117656.818,143,X,508,499.824,383547,,383547,145,python_function,torch/nn/modules/container.py(248): forward
+6083647117657.412,145,X,509,2.095,383547,,383547,146,python_function,torch/nn/modules/container.py(240): __iter__
+6083647117658.285,146,X,510,0.362,383547,,383547,147,python_function,<built-in method values of collections.defaultdict object at 0x7f408de37ba0>
+6083647117658.972,146,X,511,0.342,383547,,383547,148,python_function,<built-in function iter>
+6083647117672.356,145,X,512,161.063,383547,1,383547,149,python_function,nn.Module: Conv2d_1
+6083647117673.415,149,X,513,159.233,383547,,383547,150,python_function,torch/nn/modules/module.py(1740): _call_impl
+6083647117673.748,150,X,514,0.469,383547,,383547,151,python_function,<built-in method _get_tracing_state of PyCapsule object at 0x7f41fc1f7a20>
+6083647117676.048,150,X,515,156.22,383547,,383547,152,python_function,torch/nn/modules/conv.py(553): forward
+6083647117679.676,152,X,516,1.175,383547,,383547,153,python_function,torch/nn/modules/module.py(1918): __getattr__
+6083647117682.331,152,X,517,0.404,383547,,383547,154,python_function,torch/nn/modules/module.py(1918): __getattr__
+6083647117683.249,152,X,518,148.53,383547,,383547,155,python_function,torch/nn/modules/conv.py(536): _conv_forward
+6083647117685.047,155,X,519,146.396,383547,,383547,156,python_function,<built-in method conv2d of type object at 0x7f41e7e5f1c0>
+6083647117851.043,145,X,520,195.949,383547,1,383547,157,python_function,nn.Module: BatchNorm2d_1
+6083647117852.731,157,X,521,193.743,383547,,383547,158,python_function,torch/nn/modules/module.py(1740): _call_impl
+6083647117853.771,158,X,522,1.494,383547,,383547,159,python_function,<built-in method _get_tracing_state of PyCapsule object at 0x7f41fc1f7a20>
+6083647117857.099,158,X,523,188.829,383547,,383547,160,python_function,torch/nn/modules/batchnorm.py(159): forward
+6083647117857.868,160,X,524,1.602,383547,,383547,161,python_function,torch/nn/modules/batchnorm.py(450): _check_input_dim
+6083647117858.509,161,X,525,0.547,383547,,383547,162,python_function,<built-in method dim of Tensor object at 0x7f41663e0fe0>
+6083647117862.804,160,X,526,1.503,383547,,383547,163,python_function,torch/nn/modules/module.py(1918): __getattr__
+6083647117865.393,160,X,527,0.611,383547,,383547,164,python_function,torch/nn/modules/module.py(1918): __getattr__
+6083647117866.533,160,X,528,32.752,383547,,383547,165,python_function,<built-in method add_ of Tensor object at 0x7f408c6d2390>
+6083647117902.291,160,X,529,1.046,383547,,383547,166,python_function,torch/nn/modules/module.py(1918): __getattr__
+6083647117904.562,160,X,530,0.54,383547,,383547,167,python_function,torch/nn/modules/module.py(1918): __getattr__
+6083647117906.301,160,X,531,0.369,383547,,383547,168,python_function,torch/nn/modules/module.py(1918): __getattr__
+6083647117907.788,160,X,532,0.326,383547,,383547,169,python_function,torch/nn/modules/module.py(1918): __getattr__
+6083647117908.976,160,X,533,136.63,383547,,383547,170,python_function,torch/nn/functional.py(2781): batch_norm
+6083647117909.562,170,X,534,0.506,383547,,383547,171,python_function,<built-in function _has_torch_function_variadic>
+6083647117910.857,170,X,535,1.266,383547,,383547,172,python_function,<built-in method size of Tensor object at 0x7f41663e0fe0>
+6083647117912.586,170,X,536,4.24,383547,,383547,173,python_function,torch/nn/functional.py(2762): _verify_batch_size
+6083647117913.628,173,X,537,0.233,383547,,383547,174,python_function,<built-in function len>
+6083647117919.811,170,X,538,1.014,383547,,383547,175,python_function,torch/backends/__init__.py(38): __get__
+6083647117920.314,175,X,539,0.399,383547,,383547,176,python_function,<built-in function _get_cudnn_enabled>
+6083647117921.375,170,X,540,123.976,383547,,383547,177,python_function,<built-in method batch_norm of type object at 0x7f41e7e5f1c0>
+6083647118055.801,145,X,541,99.953,383547,1,383547,178,python_function,nn.Module: ReLU6_1
+6083647118057.14,178,X,542,98.159,383547,,383547,179,python_function,torch/nn/modules/module.py(1740): _call_impl
+6083647118057.786,179,X,543,1.488,383547,,383547,180,python_function,<built-in method _get_tracing_state of PyCapsule object at 0x7f41fc1f7a20>
+6083647118060.979,179,X,544,94.017,383547,,383547,181,python_function,torch/nn/modules/activation.py(268): forward
+6083647118062.121,181,X,545,92.556,383547,,383547,182,python_function,torch/nn/functional.py(1745): hardtanh
+6083647118062.519,182,X,546,0.344,383547,,383547,183,python_function,<built-in function _has_torch_function_unary>
+6083647118064.219,182,X,547,90.153,383547,,383547,184,python_function,<built-in function hardtanh_>
+6083647118166.919,95,X,548,93.197,383547,0,383547,185,python_function,nn.Module: MaxPool2d_0
+6083647118168.282,185,X,549,91.383,383547,,383547,186,python_function,torch/nn/modules/module.py(1740): _call_impl
+6083647118168.816,186,X,550,1.239,383547,,383547,187,python_function,<built-in method _get_tracing_state of PyCapsule object at 0x7f41fc1f7a20>
+6083647118173.965,186,X,551,85.461,383547,,383547,188,python_function,torch/nn/modules/pooling.py(212): forward
+6083647118192.324,188,X,552,66.481,383547,,383547,189,python_function,torch/_jit_internal.py(614): fn
+6083647118196.466,189,X,553,61.597,383547,,383547,190,python_function,torch/nn/functional.py(807): _max_pool2d
+6083647118197.213,190,X,554,0.197,383547,,383547,191,python_function,<built-in function _has_torch_function_unary>
+6083647118203.531,190,X,555,54.365,383547,,383547,192,python_function,<built-in method max_pool2d of type object at 0x7f41e7e5f1c0>
+6083647118294.025,90,X,556,2.395,383547,,383547,193,python_function,torch/nn/modules/module.py(1918): __getattr__
+6083647118301.647,90,X,557,1037.483,383547,3,383547,194,python_function,nn.Module: Sequential_3
+6083647118302.76,194,X,558,1035.563,383547,,383547,195,python_function,torch/nn/modules/module.py(1740): _call_impl
+6083647118303.221,195,X,559,1.068,383547,,383547,196,python_function,<built-in method _get_tracing_state of PyCapsule object at 0x7f41fc1f7a20>
+6083647118305.609,195,X,560,1032.365,383547,,383547,197,python_function,torch/nn/modules/container.py(248): forward
+6083647118306.105,197,X,561,1.826,383547,,383547,198,python_function,torch/nn/modules/container.py(240): __iter__
+6083647118306.899,198,X,562,0.285,383547,,383547,199,python_function,<built-in method values of collections.defaultdict object at 0x7f408de37ba0>
+6083647118307.431,198,X,563,0.32,383547,,383547,200,python_function,<built-in function iter>
+6083647118312.424,197,X,564,483.29,383547,4,383547,201,python_function,nn.Module: Sequential_4
+6083647118313.173,201,X,565,482.035,383547,,383547,202,python_function,torch/nn/modules/module.py(1740): _call_impl
+6083647118313.477,202,X,566,0.436,383547,,383547,203,python_function,<built-in method _get_tracing_state of PyCapsule object at 0x7f41fc1f7a20>
+6083647118315.219,202,X,567,479.717,383547,,383547,204,python_function,torch/nn/modules/container.py(248): forward
+6083647118315.516,204,X,568,0.892,383547,,383547,205,python_function,torch/nn/modules/container.py(240): __iter__
+6083647118315.977,205,X,569,0.097,383547,,383547,206,python_function,<built-in method values of collections.defaultdict object at 0x7f408de37ba0>
+6083647118316.235,205,X,570,0.087,383547,,383547,207,python_function,<built-in function iter>
+6083647118324.631,204,X,571,168.933,383547,2,383547,208,python_function,nn.Module: Conv2d_2
+6083647118325.407,208,X,572,167.585,383547,,383547,209,python_function,torch/nn/modules/module.py(1740): _call_impl
+6083647118325.69,209,X,573,0.361,383547,,383547,210,python_function,<built-in method _get_tracing_state of PyCapsule object at 0x7f41fc1f7a20>
+6083647118327.298,209,X,574,165.297,383547,,383547,211,python_function,torch/nn/modules/conv.py(553): forward
+6083647118329.17,211,X,575,0.75,383547,,383547,212,python_function,torch/nn/modules/module.py(1918): __getattr__
+6083647118330.826,211,X,576,0.372,383547,,383547,213,python_function,torch/nn/modules/module.py(1918): __getattr__
+6083647118331.617,211,X,577,160.467,383547,,383547,214,python_function,torch/nn/modules/conv.py(536): _conv_forward
+6083647118333.031,214,X,578,158.711,383547,,383547,215,python_function,<built-in method conv2d of type object at 0x7f41e7e5f1c0>
+6083647118504.239,204,X,579,185.843,383547,2,383547,216,python_function,nn.Module: BatchNorm2d_2
+6083647118505.7,216,X,580,183.819,383547,,383547,217,python_function,torch/nn/modules/module.py(1740): _call_impl
+6083647118506.388,217,X,581,1.429,383547,,383547,218,python_function,<built-in method _get_tracing_state of PyCapsule object at 0x7f41fc1f7a20>
+6083647118509.548,217,X,582,179.595,383547,,383547,219,python_function,torch/nn/modules/batchnorm.py(159): forward
+6083647118510.119,219,X,583,1.502,383547,,383547,220,python_function,torch/nn/modules/batchnorm.py(450): _check_input_dim
+6083647118510.813,220,X,584,0.433,383547,,383547,221,python_function,<built-in method dim of Tensor object at 0x7f41663e0fe0>
+6083647118514.676,219,X,585,1.481,383547,,383547,222,python_function,torch/nn/modules/module.py(1918): __getattr__
+6083647118517.234,219,X,586,0.533,383547,,383547,223,python_function,torch/nn/modules/module.py(1918): __getattr__
+6083647118518.319,219,X,587,30.686,383547,,383547,224,python_function,<built-in method add_ of Tensor object at 0x7f408c6d2390>
+6083647118552.109,219,X,588,0.84,383547,,383547,225,python_function,torch/nn/modules/module.py(1918): __getattr__
+6083647118554.08,219,X,589,0.628,383547,,383547,226,python_function,torch/nn/modules/module.py(1918): __getattr__
+6083647118555.778,219,X,590,0.371,383547,,383547,227,python_function,torch/nn/modules/module.py(1918): __getattr__
+6083647118557.14,219,X,591,0.333,383547,,383547,228,python_function,torch/nn/modules/module.py(1918): __getattr__
+6083647118558.292,219,X,592,130.505,383547,,383547,229,python_function,torch/nn/functional.py(2781): batch_norm
+6083647118558.658,229,X,593,0.437,383547,,383547,230,python_function,<built-in function _has_torch_function_variadic>
+6083647118559.79,229,X,594,1.298,383547,,383547,231,python_function,<built-in method size of Tensor object at 0x7f41663e0fe0>
+6083647118561.508,229,X,595,3.725,383547,,383547,232,python_function,torch/nn/functional.py(2762): _verify_batch_size
+6083647118562.247,232,X,596,0.255,383547,,383547,233,python_function,<built-in function len>
+6083647118568.086,229,X,597,0.853,383547,,383547,234,python_function,torch/backends/__init__.py(38): __get__
+6083647118568.404,234,X,598,0.452,383547,,383547,235,python_function,<built-in function _get_cudnn_enabled>
+6083647118569.336,229,X,599,119.195,383547,,383547,236,python_function,<built-in method batch_norm of type object at 0x7f41e7e5f1c0>
+6083647118695.373,204,X,600,98.735,383547,2,383547,237,python_function,nn.Module: ReLU6_2
+6083647118696.544,237,X,601,97.106,383547,,383547,238,python_function,torch/nn/modules/module.py(1740): _call_impl
+6083647118697.1,238,X,602,1.225,383547,,383547,239,python_function,<built-in method _get_tracing_state of PyCapsule object at 0x7f41fc1f7a20>
+6083647118699.907,238,X,603,93.463,383547,,383547,240,python_function,torch/nn/modules/activation.py(268): forward
+6083647118701.713,240,X,604,91.347,383547,,383547,241,python_function,torch/nn/functional.py(1745): hardtanh
+6083647118701.944,241,X,605,0.291,383547,,383547,242,python_function,<built-in function _has_torch_function_unary>
+6083647118703.42,241,X,606,89.34,383547,,383547,243,python_function,<built-in function hardtanh_>
+6083647118801.068,197,X,607,474.837,383547,5,383547,244,python_function,nn.Module: Sequential_5
+6083647118802.17,244,X,608,473.194,383547,,383547,245,python_function,torch/nn/modules/module.py(1740): _call_impl
+6083647118802.685,245,X,609,0.99,383547,,383547,246,python_function,<built-in method _get_tracing_state of PyCapsule object at 0x7f41fc1f7a20>
+6083647118805.171,245,X,610,469.97,383547,,383547,247,python_function,torch/nn/modules/container.py(248): forward
+6083647118805.646,247,X,611,1.648,383547,,383547,248,python_function,torch/nn/modules/container.py(240): __iter__
+6083647118806.303,248,X,612,0.265,383547,,383547,249,python_function,<built-in method values of collections.defaultdict object at 0x7f408de37ba0>
+6083647118806.811,248,X,613,0.32,383547,,383547,250,python_function,<built-in function iter>
+6083647118813.133,247,X,614,165.045,383547,3,383547,251,python_function,nn.Module: Conv2d_3
+6083647118814.682,251,X,615,162.93,383547,,383547,252,python_function,torch/nn/modules/module.py(1740): _call_impl
+6083647118815.0,252,X,616,0.33,383547,,383547,253,python_function,<built-in method _get_tracing_state of PyCapsule object at 0x7f41fc1f7a20>
+6083647118816.612,252,X,617,160.664,383547,,383547,254,python_function,torch/nn/modules/conv.py(553): forward
+6083647118818.871,254,X,618,0.964,383547,,383547,255,python_function,torch/nn/modules/module.py(1918): __getattr__
+6083647118820.838,254,X,619,0.391,383547,,383547,256,python_function,torch/nn/modules/module.py(1918): __getattr__
+6083647118821.536,254,X,620,155.324,383547,,383547,257,python_function,torch/nn/modules/conv.py(536): _conv_forward
+6083647118822.855,257,X,621,153.664,383547,,383547,258,python_function,<built-in method conv2d of type object at 0x7f41e7e5f1c0>
+6083647118994.354,247,X,622,180.727,383547,3,383547,259,python_function,nn.Module: BatchNorm2d_3
+6083647118996.397,259,X,623,178.08,383547,,383547,260,python_function,torch/nn/modules/module.py(1740): _call_impl
+6083647118997.151,260,X,624,1.369,383547,,383547,261,python_function,<built-in method _get_tracing_state of PyCapsule object at 0x7f41fc1f7a20>
+6083647119000.397,260,X,625,173.686,383547,,383547,262,python_function,torch/nn/modules/batchnorm.py(159): forward
+6083647119001.125,262,X,626,1.254,383547,,383547,263,python_function,torch/nn/modules/batchnorm.py(450): _check_input_dim
+6083647119001.566,263,X,627,0.483,383547,,383547,264,python_function,<built-in method dim of Tensor object at 0x7f41663e0fe0>
+6083647119005.24,262,X,628,1.352,383547,,383547,265,python_function,torch/nn/modules/module.py(1918): __getattr__
+6083647119007.68,262,X,629,0.549,383547,,383547,266,python_function,torch/nn/modules/module.py(1918): __getattr__
+6083647119008.696,262,X,630,30.702,383547,,383547,267,python_function,<built-in method add_ of Tensor object at 0x7f408c6d2390>
+6083647119042.314,262,X,631,0.853,383547,,383547,268,python_function,torch/nn/modules/module.py(1918): __getattr__
+6083647119044.203,262,X,632,0.572,383547,,383547,269,python_function,torch/nn/modules/module.py(1918): __getattr__
+6083647119045.845,262,X,633,0.396,383547,,383547,270,python_function,torch/nn/modules/module.py(1918): __getattr__
+6083647119047.189,262,X,634,0.342,383547,,383547,271,python_function,torch/nn/modules/module.py(1918): __getattr__
+6083647119048.201,262,X,635,125.5,383547,,383547,272,python_function,torch/nn/functional.py(2781): batch_norm
+6083647119048.591,272,X,636,0.432,383547,,383547,273,python_function,<built-in function _has_torch_function_variadic>
+6083647119049.587,272,X,637,1.165,383547,,383547,274,python_function,<built-in method size of Tensor object at 0x7f41663e0fe0>
+6083647119051.133,272,X,638,3.49,383547,,383547,275,python_function,torch/nn/functional.py(2762): _verify_batch_size
+6083647119051.872,275,X,639,0.227,383547,,383547,276,python_function,<built-in function len>
+6083647119057.378,272,X,640,0.847,383547,,383547,277,python_function,torch/backends/__init__.py(38): __get__
+6083647119057.774,277,X,641,0.362,383547,,383547,278,python_function,<built-in function _get_cudnn_enabled>
+6083647119058.65,272,X,642,114.832,383547,,383547,279,python_function,<built-in method batch_norm of type object at 0x7f41e7e5f1c0>
+6083647119180.416,247,X,643,93.861,383547,3,383547,280,python_function,nn.Module: ReLU6_3
+6083647119181.785,280,X,644,92.033,383547,,383547,281,python_function,torch/nn/modules/module.py(1740): _call_impl
+6083647119182.357,281,X,645,1.261,383547,,383547,282,python_function,<built-in method _get_tracing_state of PyCapsule object at 0x7f41fc1f7a20>
+6083647119185.151,281,X,646,88.395,383547,,383547,283,python_function,torch/nn/modules/activation.py(268): forward
+6083647119186.185,283,X,647,87.09,383547,,383547,284,python_function,torch/nn/functional.py(1745): hardtanh
+6083647119186.418,284,X,648,0.291,383547,,383547,285,python_function,<built-in function _has_torch_function_unary>
+6083647119187.724,284,X,649,85.268,383547,,383547,286,python_function,<built-in function hardtanh_>
+6083647119281.052,197,X,650,56.051,383547,1,383547,287,python_function,nn.Module: MaxPool2d_1
+6083647119282.177,287,X,651,54.447,383547,,383547,288,python_function,torch/nn/modules/module.py(1740): _call_impl
+6083647119282.652,288,X,652,1.016,383547,,383547,289,python_function,<built-in method _get_tracing_state of PyCapsule object at 0x7f41fc1f7a20>
+6083647119285.21,288,X,653,51.233,383547,,383547,290,python_function,torch/nn/modules/pooling.py(212): forward
+6083647119287.188,290,X,654,48.694,383547,,383547,291,python_function,torch/_jit_internal.py(614): fn
+6083647119289.461,291,X,655,45.817,383547,,383547,292,python_function,torch/nn/functional.py(807): _max_pool2d
+6083647119289.797,292,X,656,0.205,383547,,383547,293,python_function,<built-in function _has_torch_function_unary>
+6083647119290.75,292,X,657,44.31,383547,,383547,294,python_function,<built-in method max_pool2d of type object at 0x7f41e7e5f1c0>
+6083647119343.763,90,X,658,1.873,383547,,383547,295,python_function,torch/nn/modules/module.py(1918): __getattr__
+6083647119353.011,90,X,659,1498.454,383547,6,383547,296,python_function,nn.Module: Sequential_6
+6083647119354.031,296,X,660,1496.915,383547,,383547,297,python_function,torch/nn/modules/module.py(1740): _call_impl
+6083647119354.435,297,X,661,0.902,383547,,383547,298,python_function,<built-in method _get_tracing_state of PyCapsule object at 0x7f41fc1f7a20>
+6083647119356.506,297,X,662,1494.179,383547,,383547,299,python_function,torch/nn/modules/container.py(248): forward
+6083647119356.968,299,X,663,1.614,383547,,383547,300,python_function,torch/nn/modules/container.py(240): __iter__
+6083647119357.594,300,X,664,0.278,383547,,383547,301,python_function,<built-in method values of collections.defaultdict object at 0x7f408de37ba0>
+6083647119358.103,300,X,665,0.325,383547,,383547,302,python_function,<built-in function iter>
+6083647119363.586,299,X,666,468.842,383547,7,383547,303,python_function,nn.Module: Sequential_7
+6083647119364.387,303,X,667,467.537,383547,,383547,304,python_function,torch/nn/modules/module.py(1740): _call_impl
+6083647119364.645,304,X,668,0.353,383547,,383547,305,python_function,<built-in method _get_tracing_state of PyCapsule object at 0x7f41fc1f7a20>
+6083647119366.174,304,X,669,465.488,383547,,383547,306,python_function,torch/nn/modules/container.py(248): forward
+6083647119366.455,306,X,670,0.922,383547,,383547,307,python_function,torch/nn/modules/container.py(240): __iter__
+6083647119366.882,307,X,671,0.089,383547,,383547,308,python_function,<built-in method values of collections.defaultdict object at 0x7f408de37ba0>
+6083647119367.183,307,X,672,0.128,383547,,383547,309,python_function,<built-in function iter>
+6083647119376.278,306,X,673,155.061,383547,4,383547,310,python_function,nn.Module: Conv2d_4
+6083647119377.025,310,X,674,153.8,383547,,383547,311,python_function,torch/nn/modules/module.py(1740): _call_impl
+6083647119377.295,311,X,675,0.401,383547,,383547,312,python_function,<built-in method _get_tracing_state of PyCapsule object at 0x7f41fc1f7a20>
+6083647119378.935,311,X,676,151.557,383547,,383547,313,python_function,torch/nn/modules/conv.py(553): forward
+6083647119380.527,313,X,677,0.697,383547,,383547,314,python_function,torch/nn/modules/module.py(1918): __getattr__
+6083647119382.177,313,X,678,0.37,383547,,383547,315,python_function,torch/nn/modules/module.py(1918): __getattr__
+6083647119382.855,313,X,679,147.117,383547,,383547,316,python_function,torch/nn/modules/conv.py(536): _conv_forward
+6083647119384.153,316,X,680,145.509,383547,,383547,317,python_function,<built-in method conv2d of type object at 0x7f41e7e5f1c0>
+6083647119539.343,306,X,681,191.771,383547,4,383547,318,python_function,nn.Module: BatchNorm2d_4
+6083647119540.671,318,X,682,189.863,383547,,383547,319,python_function,torch/nn/modules/module.py(1740): _call_impl
+6083647119541.305,319,X,683,1.324,383547,,383547,320,python_function,<built-in method _get_tracing_state of PyCapsule object at 0x7f41fc1f7a20>
+6083647119544.259,319,X,684,185.879,383547,,383547,321,python_function,torch/nn/modules/batchnorm.py(159): forward
+6083647119544.764,321,X,685,1.186,383547,,383547,322,python_function,torch/nn/modules/batchnorm.py(450): _check_input_dim
+6083647119545.166,322,X,686,0.4,383547,,383547,323,python_function,<built-in method dim of Tensor object at 0x7f41663e0fe0>
+6083647119548.48,321,X,687,1.428,383547,,383547,324,python_function,torch/nn/modules/module.py(1918): __getattr__
+6083647119550.973,321,X,688,0.556,383547,,383547,325,python_function,torch/nn/modules/module.py(1918): __getattr__
+6083647119551.894,321,X,689,29.138,383547,,383547,326,python_function,<built-in method add_ of Tensor object at 0x7f408c6d2390>
+6083647119583.782,321,X,690,0.852,383547,,383547,327,python_function,torch/nn/modules/module.py(1918): __getattr__
+6083647119585.753,321,X,691,0.588,383547,,383547,328,python_function,torch/nn/modules/module.py(1918): __getattr__
+6083647119587.415,321,X,692,0.314,383547,,383547,329,python_function,torch/nn/modules/module.py(1918): __getattr__
+6083647119588.7,321,X,693,0.328,383547,,383547,330,python_function,torch/nn/modules/module.py(1918): __getattr__
+6083647119589.716,321,X,694,140.144,383547,,383547,331,python_function,torch/nn/functional.py(2781): batch_norm
+6083647119590.153,331,X,695,0.441,383547,,383547,332,python_function,<built-in function _has_torch_function_variadic>
+6083647119591.038,331,X,696,1.153,383547,,383547,333,python_function,<built-in method size of Tensor object at 0x7f41663e0fe0>
+6083647119592.563,331,X,697,3.509,383547,,383547,334,python_function,torch/nn/functional.py(2762): _verify_batch_size
+6083647119593.268,334,X,698,0.209,383547,,383547,335,python_function,<built-in function len>
+6083647119598.656,331,X,699,0.877,383547,,383547,336,python_function,torch/backends/__init__.py(38): __get__
+6083647119599.092,336,X,700,0.391,383547,,383547,337,python_function,<built-in function _get_cudnn_enabled>
+6083647119599.937,331,X,701,129.709,383547,,383547,338,python_function,<built-in method batch_norm of type object at 0x7f41e7e5f1c0>
+6083647119736.318,306,X,702,94.571,383547,4,383547,339,python_function,nn.Module: ReLU6_4
+6083647119737.638,339,X,703,92.792,383547,,383547,340,python_function,torch/nn/modules/module.py(1740): _call_impl
+6083647119738.217,340,X,704,1.343,383547,,383547,341,python_function,<built-in method _get_tracing_state of PyCapsule object at 0x7f41fc1f7a20>
+6083647119741.42,340,X,705,88.713,383547,,383547,342,python_function,torch/nn/modules/activation.py(268): forward
+6083647119742.431,342,X,706,87.468,383547,,383547,343,python_function,torch/nn/functional.py(1745): hardtanh
+6083647119742.736,343,X,707,0.338,383547,,383547,344,python_function,<built-in function _has_torch_function_unary>
+6083647119744.163,343,X,708,85.458,383547,,383547,345,python_function,<built-in function hardtanh_>
+6083647119836.157,299,X,709,468.351,383547,8,383547,346,python_function,nn.Module: Sequential_8
+6083647119837.117,346,X,710,466.996,383547,,383547,347,python_function,torch/nn/modules/module.py(1740): _call_impl
+6083647119837.561,347,X,711,0.907,383547,,383547,348,python_function,<built-in method _get_tracing_state of PyCapsule object at 0x7f41fc1f7a20>
+6083647119840.16,347,X,712,463.741,383547,,383547,349,python_function,torch/nn/modules/container.py(248): forward
+6083647119840.582,349,X,713,1.557,383547,,383547,350,python_function,torch/nn/modules/container.py(240): __iter__
+6083647119841.204,350,X,714,0.279,383547,,383547,351,python_function,<built-in method values of collections.defaultdict object at 0x7f408de37ba0>
+6083647119841.72,350,X,715,0.259,383547,,383547,352,python_function,<built-in function iter>
+6083647119848.211,349,X,716,161.599,383547,5,383547,353,python_function,nn.Module: Conv2d_5
+6083647119849.178,353,X,717,160.09,383547,,383547,354,python_function,torch/nn/modules/module.py(1740): _call_impl
+6083647119849.445,354,X,718,0.397,383547,,383547,355,python_function,<built-in method _get_tracing_state of PyCapsule object at 0x7f41fc1f7a20>
+6083647119850.954,354,X,719,157.983,383547,,383547,356,python_function,torch/nn/modules/conv.py(553): forward
+6083647119853.628,356,X,720,0.992,383547,,383547,357,python_function,torch/nn/modules/module.py(1918): __getattr__
+6083647119855.466,356,X,721,0.401,383547,,383547,358,python_function,torch/nn/modules/module.py(1918): __getattr__
+6083647119856.162,356,X,722,152.303,383547,,383547,359,python_function,torch/nn/modules/conv.py(536): _conv_forward
+6083647119857.489,359,X,723,150.628,383547,,383547,360,python_function,<built-in method conv2d of type object at 0x7f41e7e5f1c0>
+6083647120021.42,349,X,724,183.703,383547,5,383547,361,python_function,nn.Module: BatchNorm2d_5
+6083647120022.828,361,X,725,181.749,383547,,383547,362,python_function,torch/nn/modules/module.py(1740): _call_impl
+6083647120023.456,362,X,726,1.391,383547,,383547,363,python_function,<built-in method _get_tracing_state of PyCapsule object at 0x7f41fc1f7a20>
+6083647120026.492,362,X,727,177.686,383547,,383547,364,python_function,torch/nn/modules/batchnorm.py(159): forward
+6083647120027.037,364,X,728,1.143,383547,,383547,365,python_function,torch/nn/modules/batchnorm.py(450): _check_input_dim
+6083647120027.37,365,X,729,0.459,383547,,383547,366,python_function,<built-in method dim of Tensor object at 0x7f41663e0fe0>
+6083647120030.695,364,X,730,1.509,383547,,383547,367,python_function,torch/nn/modules/module.py(1918): __getattr__
+6083647120033.289,364,X,731,0.543,383547,,383547,368,python_function,torch/nn/modules/module.py(1918): __getattr__
+6083647120034.228,364,X,732,29.204,383547,,383547,369,python_function,<built-in method add_ of Tensor object at 0x7f408c6d2390>
+6083647120066.079,364,X,733,0.906,383547,,383547,370,python_function,torch/nn/modules/module.py(1918): __getattr__
+6083647120068.059,364,X,734,0.646,383547,,383547,371,python_function,torch/nn/modules/module.py(1918): __getattr__
+6083647120069.847,364,X,735,0.335,383547,,383547,372,python_function,torch/nn/modules/module.py(1918): __getattr__
+6083647120071.094,364,X,736,0.358,383547,,383547,373,python_function,torch/nn/modules/module.py(1918): __getattr__
+6083647120072.148,364,X,737,131.682,383547,,383547,374,python_function,torch/nn/functional.py(2781): batch_norm
+6083647120072.552,374,X,738,0.401,383547,,383547,375,python_function,<built-in function _has_torch_function_variadic>
+6083647120073.445,374,X,739,1.191,383547,,383547,376,python_function,<built-in method size of Tensor object at 0x7f41663e0fe0>
+6083647120074.985,374,X,740,3.628,383547,,383547,377,python_function,torch/nn/functional.py(2762): _verify_batch_size
+6083647120075.762,377,X,741,0.243,383547,,383547,378,python_function,<built-in function len>
+6083647120081.25,374,X,742,0.842,383547,,383547,379,python_function,torch/backends/__init__.py(38): __get__
+6083647120081.619,379,X,743,0.408,383547,,383547,380,python_function,<built-in function _get_cudnn_enabled>
+6083647120082.474,374,X,744,121.132,383547,,383547,381,python_function,<built-in method batch_norm of type object at 0x7f41e7e5f1c0>
+6083647120210.32,349,X,745,92.672,383547,5,383547,382,python_function,nn.Module: ReLU6_5
+6083647120211.57,382,X,746,90.938,383547,,383547,383,python_function,torch/nn/modules/module.py(1740): _call_impl
+6083647120212.109,383,X,747,1.358,383547,,383547,384,python_function,<built-in method _get_tracing_state of PyCapsule object at 0x7f41fc1f7a20>
+6083647120215.008,383,X,748,87.214,383547,,383547,385,python_function,torch/nn/modules/activation.py(268): forward
+6083647120215.971,385,X,749,86.022,383547,,383547,386,python_function,torch/nn/functional.py(1745): hardtanh
+6083647120216.276,386,X,750,0.326,383547,,383547,387,python_function,<built-in function _has_torch_function_unary>
+6083647120217.609,386,X,751,84.105,383547,,383547,388,python_function,<built-in function hardtanh_>
+6083647120308.744,299,X,752,478.141,383547,9,383547,389,python_function,nn.Module: Sequential_9
+6083647120309.785,389,X,753,476.667,383547,,383547,390,python_function,torch/nn/modules/module.py(1740): _call_impl
+6083647120310.258,390,X,754,1.028,383547,,383547,391,python_function,<built-in method _get_tracing_state of PyCapsule object at 0x7f41fc1f7a20>
+6083647120312.601,390,X,755,473.656,383547,,383547,392,python_function,torch/nn/modules/container.py(248): forward
+6083647120313.027,392,X,756,1.545,383547,,383547,393,python_function,torch/nn/modules/container.py(240): __iter__
+6083647120313.57,393,X,757,0.299,383547,,383547,394,python_function,<built-in method values of collections.defaultdict object at 0x7f408de37ba0>
+6083647120314.075,393,X,758,0.315,383547,,383547,395,python_function,<built-in function iter>
+6083647120326.025,392,X,759,161.827,383547,6,383547,396,python_function,nn.Module: Conv2d_6
+6083647120327.027,396,X,760,160.353,383547,,383547,397,python_function,torch/nn/modules/module.py(1740): _call_impl
+6083647120327.32,397,X,761,0.402,383547,,383547,398,python_function,<built-in method _get_tracing_state of PyCapsule object at 0x7f41fc1f7a20>
+6083647120328.831,397,X,762,158.186,383547,,383547,399,python_function,torch/nn/modules/conv.py(553): forward
+6083647120331.262,399,X,763,0.935,383547,,383547,400,python_function,torch/nn/modules/module.py(1918): __getattr__
+6083647120333.117,399,X,764,0.344,383547,,383547,401,python_function,torch/nn/modules/module.py(1918): __getattr__
+6083647120333.764,399,X,765,152.862,383547,,383547,402,python_function,torch/nn/modules/conv.py(536): _conv_forward
+6083647120335.049,402,X,766,151.233,383547,,383547,403,python_function,<built-in method conv2d of type object at 0x7f41e7e5f1c0>
+6083647120507.633,392,X,767,180.192,383547,6,383547,404,python_function,nn.Module: BatchNorm2d_6
+6083647120509.284,404,X,768,178.003,383547,,383547,405,python_function,torch/nn/modules/module.py(1740): _call_impl
+6083647120510.07,405,X,769,1.58,383547,,383547,406,python_function,<built-in method _get_tracing_state of PyCapsule object at 0x7f41fc1f7a20>
+6083647120513.629,405,X,770,173.229,383547,,383547,407,python_function,torch/nn/modules/batchnorm.py(159): forward
+6083647120514.175,407,X,771,1.267,383547,,383547,408,python_function,torch/nn/modules/batchnorm.py(450): _check_input_dim
+6083647120514.561,408,X,772,0.473,383547,,383547,409,python_function,<built-in method dim of Tensor object at 0x7f41663e0fe0>
+6083647120518.108,407,X,773,1.282,383547,,383547,410,python_function,torch/nn/modules/module.py(1918): __getattr__
+6083647120520.353,407,X,774,0.571,383547,,383547,411,python_function,torch/nn/modules/module.py(1918): __getattr__
+6083647120521.309,407,X,775,29.67,383547,,383547,412,python_function,<built-in method add_ of Tensor object at 0x7f408c6d2390>
+6083647120553.698,407,X,776,0.945,383547,,383547,413,python_function,torch/nn/modules/module.py(1918): __getattr__
+6083647120555.763,407,X,777,0.564,383547,,383547,414,python_function,torch/nn/modules/module.py(1918): __getattr__
+6083647120557.348,407,X,778,0.326,383547,,383547,415,python_function,torch/nn/modules/module.py(1918): __getattr__
+6083647120558.557,407,X,779,0.308,383547,,383547,416,python_function,torch/nn/modules/module.py(1918): __getattr__
+6083647120559.514,407,X,780,127.017,383547,,383547,417,python_function,torch/nn/functional.py(2781): batch_norm
+6083647120559.924,417,X,781,0.383,383547,,383547,418,python_function,<built-in function _has_torch_function_variadic>
+6083647120560.717,417,X,782,1.168,383547,,383547,419,python_function,<built-in method size of Tensor object at 0x7f41663e0fe0>
+6083647120562.239,417,X,783,3.442,383547,,383547,420,python_function,torch/nn/functional.py(2762): _verify_batch_size
+6083647120562.869,420,X,784,0.266,383547,,383547,421,python_function,<built-in function len>
+6083647120568.151,417,X,785,0.812,383547,,383547,422,python_function,torch/backends/__init__.py(38): __get__
+6083647120568.516,422,X,786,0.373,383547,,383547,423,python_function,<built-in function _get_cudnn_enabled>
+6083647120569.366,417,X,787,116.982,383547,,383547,424,python_function,<built-in method batch_norm of type object at 0x7f41e7e5f1c0>
+6083647120692.741,392,X,788,92.704,383547,6,383547,425,python_function,nn.Module: ReLU6_6
+6083647120694.106,425,X,789,90.919,383547,,383547,426,python_function,torch/nn/modules/module.py(1740): _call_impl
+6083647120694.594,426,X,790,1.294,383547,,383547,427,python_function,<built-in method _get_tracing_state of PyCapsule object at 0x7f41fc1f7a20>
+6083647120697.359,426,X,791,87.406,383547,,383547,428,python_function,torch/nn/modules/activation.py(268): forward
+6083647120698.37,428,X,792,86.148,383547,,383547,429,python_function,torch/nn/functional.py(1745): hardtanh
+6083647120698.675,429,X,793,0.315,383547,,383547,430,python_function,<built-in function _has_torch_function_unary>
+6083647120699.967,429,X,794,84.265,383547,,383547,431,python_function,<built-in function hardtanh_>
+6083647120791.64,299,X,795,58.157,383547,2,383547,432,python_function,nn.Module: MaxPool2d_2
+6083647120792.681,432,X,796,56.727,383547,,383547,433,python_function,torch/nn/modules/module.py(1740): _call_impl
+6083647120793.216,433,X,797,1.051,383547,,383547,434,python_function,<built-in method _get_tracing_state of PyCapsule object at 0x7f41fc1f7a20>
+6083647120795.848,433,X,798,53.365,383547,,383547,435,python_function,torch/nn/modules/pooling.py(212): forward
+6083647120797.635,435,X,799,51.069,383547,,383547,436,python_function,torch/_jit_internal.py(614): fn
+6083647120799.318,436,X,800,48.761,383547,,383547,437,python_function,torch/nn/functional.py(807): _max_pool2d
+6083647120799.904,437,X,801,0.154,383547,,383547,438,python_function,<built-in function _has_torch_function_unary>
+6083647120800.659,437,X,802,47.259,383547,,383547,439,python_function,<built-in method max_pool2d of type object at 0x7f41e7e5f1c0>
+6083647120857.957,90,X,803,1.859,383547,,383547,440,python_function,torch/nn/modules/module.py(1918): __getattr__
+6083647120862.988,90,X,804,1500.011,383547,10,383547,441,python_function,nn.Module: Sequential_10
+6083647120864.173,441,X,805,1498.113,383547,,383547,442,python_function,torch/nn/modules/module.py(1740): _call_impl
+6083647120864.522,442,X,806,0.97,383547,,383547,443,python_function,<built-in method _get_tracing_state of PyCapsule object at 0x7f41fc1f7a20>
+6083647120867.081,442,X,807,1495.014,383547,,383547,444,python_function,torch/nn/modules/container.py(248): forward
+6083647120867.539,444,X,808,1.637,383547,,383547,445,python_function,torch/nn/modules/container.py(240): __iter__
+6083647120868.204,445,X,809,0.221,383547,,383547,446,python_function,<built-in method values of collections.defaultdict object at 0x7f408de37ba0>
+6083647120868.677,445,X,810,0.341,383547,,383547,447,python_function,<built-in function iter>
+6083647120870.96,444,X,811,478.1,383547,11,383547,448,python_function,nn.Module: Sequential_11
+6083647120871.654,448,X,812,476.924,383547,,383547,449,python_function,torch/nn/modules/module.py(1740): _call_impl
+6083647120871.937,449,X,813,0.322,383547,,383547,450,python_function,<built-in method _get_tracing_state of PyCapsule object at 0x7f41fc1f7a20>
+6083647120873.531,449,X,814,474.844,383547,,383547,451,python_function,torch/nn/modules/container.py(248): forward
+6083647120873.801,451,X,815,0.689,383547,,383547,452,python_function,torch/nn/modules/container.py(240): __iter__
+6083647120874.132,452,X,816,0.056,383547,,383547,453,python_function,<built-in method values of collections.defaultdict object at 0x7f408de37ba0>
+6083647120874.309,452,X,817,0.074,383547,,383547,454,python_function,<built-in function iter>
+6083647120888.371,451,X,818,160.561,383547,7,383547,455,python_function,nn.Module: Conv2d_7
+6083647120889.215,455,X,819,159.203,383547,,383547,456,python_function,torch/nn/modules/module.py(1740): _call_impl
+6083647120889.51,456,X,820,0.391,383547,,383547,457,python_function,<built-in method _get_tracing_state of PyCapsule object at 0x7f41fc1f7a20>
+6083647120891.394,456,X,821,156.711,383547,,383547,458,python_function,torch/nn/modules/conv.py(553): forward
+6083647120892.759,458,X,822,0.577,383547,,383547,459,python_function,torch/nn/modules/module.py(1918): __getattr__
+6083647120894.149,458,X,823,0.369,383547,,383547,460,python_function,torch/nn/modules/module.py(1918): __getattr__
+6083647120894.832,458,X,824,152.898,383547,,383547,461,python_function,torch/nn/modules/conv.py(536): _conv_forward
+6083647120896.172,461,X,825,151.245,383547,,383547,462,python_function,<built-in method conv2d of type object at 0x7f41e7e5f1c0>
+6083647121058.98,451,X,826,179.712,383547,7,383547,463,python_function,nn.Module: BatchNorm2d_7
+6083647121060.479,463,X,827,177.681,383547,,383547,464,python_function,torch/nn/modules/module.py(1740): _call_impl
+6083647121061.145,464,X,828,1.335,383547,,383547,465,python_function,<built-in method _get_tracing_state of PyCapsule object at 0x7f41fc1f7a20>
+6083647121064.152,464,X,829,173.668,383547,,383547,466,python_function,torch/nn/modules/batchnorm.py(159): forward
+6083647121064.7,466,X,830,1.152,383547,,383547,467,python_function,torch/nn/modules/batchnorm.py(450): _check_input_dim
+6083647121064.988,467,X,831,0.476,383547,,383547,468,python_function,<built-in method dim of Tensor object at 0x7f41663e0fe0>
+6083647121068.379,466,X,832,1.496,383547,,383547,469,python_function,torch/nn/modules/module.py(1918): __getattr__
+6083647121070.854,466,X,833,0.579,383547,,383547,470,python_function,torch/nn/modules/module.py(1918): __getattr__
+6083647121071.812,466,X,834,29.303,383547,,383547,471,python_function,<built-in method add_ of Tensor object at 0x7f408c6d2390>
+6083647121103.686,466,X,835,0.852,383547,,383547,472,python_function,torch/nn/modules/module.py(1918): __getattr__
+6083647121105.663,466,X,836,0.853,383547,,383547,473,python_function,torch/nn/modules/module.py(1918): __getattr__
+6083647121107.56,466,X,837,0.322,383547,,383547,474,python_function,torch/nn/modules/module.py(1918): __getattr__
+6083647121108.73,466,X,838,0.322,383547,,383547,475,python_function,torch/nn/modules/module.py(1918): __getattr__
+6083647121109.801,466,X,839,127.699,383547,,383547,476,python_function,torch/nn/functional.py(2781): batch_norm
+6083647121110.128,476,X,840,0.384,383547,,383547,477,python_function,<built-in function _has_torch_function_variadic>
+6083647121110.912,476,X,841,1.419,383547,,383547,478,python_function,<built-in method size of Tensor object at 0x7f41663e0fe0>
+6083647121112.69,476,X,842,3.583,383547,,383547,479,python_function,torch/nn/functional.py(2762): _verify_batch_size
+6083647121113.452,479,X,843,0.267,383547,,383547,480,python_function,<built-in function len>
+6083647121119.225,476,X,844,0.841,383547,,383547,481,python_function,torch/backends/__init__.py(38): __get__
+6083647121119.584,481,X,845,0.391,383547,,383547,482,python_function,<built-in function _get_cudnn_enabled>
+6083647121120.425,476,X,846,116.845,383547,,383547,483,python_function,<built-in method batch_norm of type object at 0x7f41e7e5f1c0>
+6083647121249.309,451,X,847,98.213,383547,7,383547,484,python_function,nn.Module: ReLU6_7
+6083647121250.762,484,X,848,96.291,383547,,383547,485,python_function,torch/nn/modules/module.py(1740): _call_impl
+6083647121251.382,485,X,849,1.39,383547,,383547,486,python_function,<built-in method _get_tracing_state of PyCapsule object at 0x7f41fc1f7a20>
+6083647121254.233,485,X,850,92.55,383547,,383547,487,python_function,torch/nn/modules/activation.py(268): forward
+6083647121255.181,487,X,851,91.371,383547,,383547,488,python_function,torch/nn/functional.py(1745): hardtanh
+6083647121255.45,488,X,852,0.289,383547,,383547,489,python_function,<built-in function _has_torch_function_unary>
+6083647121256.856,488,X,853,89.403,383547,,383547,490,python_function,<built-in function hardtanh_>
+6083647121352.637,444,X,854,467.788,383547,12,383547,491,python_function,nn.Module: Sequential_12
+6083647121353.752,491,X,855,466.196,383547,,383547,492,python_function,torch/nn/modules/module.py(1740): _call_impl
+6083647121354.176,492,X,856,1.034,383547,,383547,493,python_function,<built-in method _get_tracing_state of PyCapsule object at 0x7f41fc1f7a20>
+6083647121356.71,492,X,857,462.981,383547,,383547,494,python_function,torch/nn/modules/container.py(248): forward
+6083647121357.082,494,X,858,1.771,383547,,383547,495,python_function,torch/nn/modules/container.py(240): __iter__
+6083647121357.847,495,X,859,0.352,383547,,383547,496,python_function,<built-in method values of collections.defaultdict object at 0x7f408de37ba0>
+6083647121358.427,495,X,860,0.271,383547,,383547,497,python_function,<built-in function iter>
+6083647121364.908,494,X,861,155.062,383547,8,383547,498,python_function,nn.Module: Conv2d_8
+6083647121365.795,498,X,862,153.644,383547,,383547,499,python_function,torch/nn/modules/module.py(1740): _call_impl
+6083647121366.11,499,X,863,0.35,383547,,383547,500,python_function,<built-in method _get_tracing_state of PyCapsule object at 0x7f41fc1f7a20>
+6083647121367.769,499,X,864,151.367,383547,,383547,501,python_function,torch/nn/modules/conv.py(553): forward
+6083647121370.095,501,X,865,0.935,383547,,383547,502,python_function,torch/nn/modules/module.py(1918): __getattr__
+6083647121371.968,501,X,866,0.368,383547,,383547,503,python_function,torch/nn/modules/module.py(1918): __getattr__
+6083647121372.646,501,X,867,146.104,383547,,383547,504,python_function,torch/nn/modules/conv.py(536): _conv_forward
+6083647121373.99,504,X,868,144.466,383547,,383547,505,python_function,<built-in method conv2d of type object at 0x7f41e7e5f1c0>
+6083647121530.749,494,X,869,191.464,383547,8,383547,506,python_function,nn.Module: BatchNorm2d_8
+6083647121532.278,506,X,870,189.375,383547,,383547,507,python_function,torch/nn/modules/module.py(1740): _call_impl
+6083647121532.916,507,X,871,1.307,383547,,383547,508,python_function,<built-in method _get_tracing_state of PyCapsule object at 0x7f41fc1f7a20>
+6083647121535.745,507,X,872,185.567,383547,,383547,509,python_function,torch/nn/modules/batchnorm.py(159): forward
+6083647121536.275,509,X,873,1.245,383547,,383547,510,python_function,torch/nn/modules/batchnorm.py(450): _check_input_dim
+6083647121536.725,510,X,874,0.437,383547,,383547,511,python_function,<built-in method dim of Tensor object at 0x7f41663e0fe0>
+6083647121540.231,509,X,875,1.451,383547,,383547,512,python_function,torch/nn/modules/module.py(1918): __getattr__
+6083647121542.686,509,X,876,0.586,383547,,383547,513,python_function,torch/nn/modules/module.py(1918): __getattr__
+6083647121543.669,509,X,877,37.462,383547,,383547,514,python_function,<built-in method add_ of Tensor object at 0x7f408c6d2390>
+6083647121583.779,509,X,878,0.966,383547,,383547,515,python_function,torch/nn/modules/module.py(1918): __getattr__
+6083647121585.882,509,X,879,0.566,383547,,383547,516,python_function,torch/nn/modules/module.py(1918): __getattr__
+6083647121587.465,509,X,880,0.345,383547,,383547,517,python_function,torch/nn/modules/module.py(1918): __getattr__
+6083647121588.709,509,X,881,0.387,383547,,383547,518,python_function,torch/nn/modules/module.py(1918): __getattr__
+6083647121589.77,509,X,882,131.18,383547,,383547,519,python_function,torch/nn/functional.py(2781): batch_norm
+6083647121590.147,519,X,883,0.398,383547,,383547,520,python_function,<built-in function _has_torch_function_variadic>
+6083647121590.948,519,X,884,1.208,383547,,383547,521,python_function,<built-in method size of Tensor object at 0x7f41663e0fe0>
+6083647121592.518,519,X,885,3.5,383547,,383547,522,python_function,torch/nn/functional.py(2762): _verify_batch_size
+6083647121593.205,522,X,886,0.267,383547,,383547,523,python_function,<built-in function len>
+6083647121598.765,519,X,887,0.791,383547,,383547,524,python_function,torch/backends/__init__.py(38): __get__
+6083647121599.145,524,X,888,0.345,383547,,383547,525,python_function,<built-in function _get_cudnn_enabled>
+6083647121599.931,519,X,889,120.82,383547,,383547,526,python_function,<built-in method batch_norm of type object at 0x7f41e7e5f1c0>
+6083647121726.968,494,X,890,91.9,383547,8,383547,527,python_function,nn.Module: ReLU6_8
+6083647121728.289,527,X,891,90.08,383547,,383547,528,python_function,torch/nn/modules/module.py(1740): _call_impl
+6083647121728.87,528,X,892,1.189,383547,,383547,529,python_function,<built-in method _get_tracing_state of PyCapsule object at 0x7f41fc1f7a20>
+6083647121731.62,528,X,893,86.478,383547,,383547,530,python_function,torch/nn/modules/activation.py(268): forward
+6083647121732.664,530,X,894,85.195,383547,,383547,531,python_function,torch/nn/functional.py(1745): hardtanh
+6083647121732.961,531,X,895,0.333,383547,,383547,532,python_function,<built-in function _has_torch_function_unary>
+6083647121734.334,531,X,896,83.276,383547,,383547,533,python_function,<built-in function hardtanh_>
+6083647121826.461,444,X,897,472.528,383547,13,383547,534,python_function,nn.Module: Sequential_13
+6083647121827.529,534,X,898,470.951,383547,,383547,535,python_function,torch/nn/modules/module.py(1740): _call_impl
+6083647121828.03,535,X,899,0.991,383547,,383547,536,python_function,<built-in method _get_tracing_state of PyCapsule object at 0x7f41fc1f7a20>
+6083647121830.713,535,X,900,467.501,383547,,383547,537,python_function,torch/nn/modules/container.py(248): forward
+6083647121831.134,537,X,901,1.543,383547,,383547,538,python_function,torch/nn/modules/container.py(240): __iter__
+6083647121831.733,538,X,902,0.253,383547,,383547,539,python_function,<built-in method values of collections.defaultdict object at 0x7f408de37ba0>
+6083647121832.184,538,X,903,0.331,383547,,383547,540,python_function,<built-in function iter>
+6083647121840.942,537,X,904,157.564,383547,9,383547,541,python_function,nn.Module: Conv2d_9
+6083647121841.774,541,X,905,156.06,383547,,383547,542,python_function,torch/nn/modules/module.py(1740): _call_impl
+6083647121842.046,542,X,906,0.385,383547,,383547,543,python_function,<built-in method _get_tracing_state of PyCapsule object at 0x7f41fc1f7a20>
+6083647121843.638,542,X,907,153.851,383547,,383547,544,python_function,torch/nn/modules/conv.py(553): forward
+6083647121845.83,544,X,908,0.959,383547,,383547,545,python_function,torch/nn/modules/module.py(1918): __getattr__
+6083647121847.73,544,X,909,0.428,383547,,383547,546,python_function,torch/nn/modules/module.py(1918): __getattr__
+6083647121848.469,544,X,910,148.568,383547,,383547,547,python_function,torch/nn/modules/conv.py(536): _conv_forward
+6083647121849.836,547,X,911,146.903,383547,,383547,548,python_function,<built-in method conv2d of type object at 0x7f41e7e5f1c0>
+6083647122008.447,537,X,912,181.541,383547,9,383547,549,python_function,nn.Module: BatchNorm2d_9
+6083647122009.919,549,X,913,179.502,383547,,383547,550,python_function,torch/nn/modules/module.py(1740): _call_impl
+6083647122010.579,550,X,914,1.393,383547,,383547,551,python_function,<built-in method _get_tracing_state of PyCapsule object at 0x7f41fc1f7a20>
+6083647122013.603,550,X,915,175.431,383547,,383547,552,python_function,torch/nn/modules/batchnorm.py(159): forward
+6083647122014.127,552,X,916,1.104,383547,,383547,553,python_function,torch/nn/modules/batchnorm.py(450): _check_input_dim
+6083647122014.43,553,X,917,0.451,383547,,383547,554,python_function,<built-in method dim of Tensor object at 0x7f41663e0fe0>
+6083647122017.808,552,X,918,1.216,383547,,383547,555,python_function,torch/nn/modules/module.py(1918): __getattr__
+6083647122020.076,552,X,919,0.564,383547,,383547,556,python_function,torch/nn/modules/module.py(1918): __getattr__
+6083647122021.032,552,X,920,28.83,383547,,383547,557,python_function,<built-in method add_ of Tensor object at 0x7f408c6d2390>
+6083647122052.625,552,X,921,0.983,383547,,383547,558,python_function,torch/nn/modules/module.py(1918): __getattr__
+6083647122054.785,552,X,922,0.71,383547,,383547,559,python_function,torch/nn/modules/module.py(1918): __getattr__
+6083647122056.558,552,X,923,0.381,383547,,383547,560,python_function,torch/nn/modules/module.py(1918): __getattr__
+6083647122057.854,552,X,924,0.33,383547,,383547,561,python_function,torch/nn/modules/module.py(1918): __getattr__
+6083647122058.806,552,X,925,129.881,383547,,383547,562,python_function,torch/nn/functional.py(2781): batch_norm
+6083647122059.167,562,X,926,0.411,383547,,383547,563,python_function,<built-in function _has_torch_function_variadic>
+6083647122060.031,562,X,927,1.229,383547,,383547,564,python_function,<built-in method size of Tensor object at 0x7f41663e0fe0>
+6083647122061.685,562,X,928,3.482,383547,,383547,565,python_function,torch/nn/functional.py(2762): _verify_batch_size
+6083647122062.416,565,X,929,0.243,383547,,383547,566,python_function,<built-in function len>
+6083647122067.835,562,X,930,0.816,383547,,383547,567,python_function,torch/backends/__init__.py(38): __get__
+6083647122068.217,567,X,931,0.357,383547,,383547,568,python_function,<built-in function _get_cudnn_enabled>
+6083647122069.038,562,X,932,119.451,383547,,383547,569,python_function,<built-in method batch_norm of type object at 0x7f41e7e5f1c0>
+6083647122198.197,537,X,933,99.186,383547,9,383547,570,python_function,nn.Module: ReLU6_9
+6083647122199.618,570,X,934,97.261,383547,,383547,571,python_function,torch/nn/modules/module.py(1740): _call_impl
+6083647122200.117,571,X,935,1.303,383547,,383547,572,python_function,<built-in method _get_tracing_state of PyCapsule object at 0x7f41fc1f7a20>
+6083647122203.205,571,X,936,93.403,383547,,383547,573,python_function,torch/nn/modules/activation.py(268): forward
+6083647122209.577,573,X,937,86.821,383547,,383547,574,python_function,torch/nn/functional.py(1745): hardtanh
+6083647122209.924,574,X,938,0.355,383547,,383547,575,python_function,<built-in function _has_torch_function_unary>
+6083647122211.453,574,X,939,84.661,383547,,383547,576,python_function,<built-in function hardtanh_>
+6083647122304.09,444,X,940,57.134,383547,3,383547,577,python_function,nn.Module: MaxPool2d_3
+6083647122305.277,577,X,941,55.501,383547,,383547,578,python_function,torch/nn/modules/module.py(1740): _call_impl
+6083647122305.739,578,X,942,1.129,383547,,383547,579,python_function,<built-in method _get_tracing_state of PyCapsule object at 0x7f41fc1f7a20>
+6083647122308.703,578,X,943,51.884,383547,,383547,580,python_function,torch/nn/modules/pooling.py(212): forward
+6083647122310.331,580,X,944,49.775,383547,,383547,581,python_function,torch/_jit_internal.py(614): fn
+6083647122311.896,581,X,945,47.672,383547,,383547,582,python_function,torch/nn/functional.py(807): _max_pool2d
+6083647122312.123,582,X,946,0.199,383547,,383547,583,python_function,<built-in function _has_torch_function_unary>
+6083647122312.872,582,X,947,46.534,383547,,383547,584,python_function,<built-in method max_pool2d of type object at 0x7f41e7e5f1c0>
+6083647122367.447,90,X,948,1.995,383547,,383547,585,python_function,torch/nn/modules/module.py(1918): __getattr__
+6083647122372.741,90,X,949,1524.762,383547,14,383547,586,python_function,nn.Module: Sequential_14
+6083647122373.5,586,X,950,1523.526,383547,,383547,587,python_function,torch/nn/modules/module.py(1740): _call_impl
+6083647122373.856,587,X,951,0.946,383547,,383547,588,python_function,<built-in method _get_tracing_state of PyCapsule object at 0x7f41fc1f7a20>
+6083647122376.247,587,X,952,1520.524,383547,,383547,589,python_function,torch/nn/modules/container.py(248): forward
+6083647122376.71,589,X,953,1.671,383547,,383547,590,python_function,torch/nn/modules/container.py(240): __iter__
+6083647122377.294,590,X,954,0.283,383547,,383547,591,python_function,<built-in method values of collections.defaultdict object at 0x7f408de37ba0>
+6083647122377.862,590,X,955,0.364,383547,,383547,592,python_function,<built-in function iter>
+6083647122380.166,589,X,956,484.802,383547,15,383547,593,python_function,nn.Module: Sequential_15
+6083647122380.849,593,X,957,483.623,383547,,383547,594,python_function,torch/nn/modules/module.py(1740): _call_impl
+6083647122381.083,594,X,958,0.307,383547,,383547,595,python_function,<built-in method _get_tracing_state of PyCapsule object at 0x7f41fc1f7a20>
+6083647122382.523,594,X,959,481.678,383547,,383547,596,python_function,torch/nn/modules/container.py(248): forward
+6083647122382.712,596,X,960,0.712,383547,,383547,597,python_function,torch/nn/modules/container.py(240): __iter__
+6083647122383.034,597,X,961,0.085,383547,,383547,598,python_function,<built-in method values of collections.defaultdict object at 0x7f408de37ba0>
+6083647122383.248,597,X,962,0.095,383547,,383547,599,python_function,<built-in function iter>
+6083647122393.934,596,X,963,171.768,383547,10,383547,600,python_function,nn.Module: Conv2d_10
+6083647122394.781,600,X,964,170.406,383547,,383547,601,python_function,torch/nn/modules/module.py(1740): _call_impl
+6083647122395.054,601,X,965,0.454,383547,,383547,602,python_function,<built-in method _get_tracing_state of PyCapsule object at 0x7f41fc1f7a20>
+6083647122396.713,601,X,966,168.13,383547,,383547,603,python_function,torch/nn/modules/conv.py(553): forward
+6083647122398.112,603,X,967,0.633,383547,,383547,604,python_function,torch/nn/modules/module.py(1918): __getattr__
+6083647122400.075,603,X,968,0.371,383547,,383547,605,python_function,torch/nn/modules/module.py(1918): __getattr__
+6083647122400.784,603,X,969,163.584,383547,,383547,606,python_function,torch/nn/modules/conv.py(536): _conv_forward
+6083647122402.097,606,X,970,161.928,383547,,383547,607,python_function,<built-in method conv2d of type object at 0x7f41e7e5f1c0>
+6083647122574.751,596,X,971,186.024,383547,10,383547,608,python_function,nn.Module: BatchNorm2d_10
+6083647122576.288,608,X,972,183.941,383547,,383547,609,python_function,torch/nn/modules/module.py(1740): _call_impl
+6083647122576.819,609,X,973,1.519,383547,,383547,610,python_function,<built-in method _get_tracing_state of PyCapsule object at 0x7f41fc1f7a20>
+6083647122580.003,609,X,974,179.871,383547,,383547,611,python_function,torch/nn/modules/batchnorm.py(159): forward
+6083647122580.576,611,X,975,1.212,383547,,383547,612,python_function,torch/nn/modules/batchnorm.py(450): _check_input_dim
+6083647122580.988,612,X,976,0.43,383547,,383547,613,python_function,<built-in method dim of Tensor object at 0x7f41663e0fe0>
+6083647122585.003,611,X,977,1.494,383547,,383547,614,python_function,torch/nn/modules/module.py(1918): __getattr__
+6083647122587.528,611,X,978,0.607,383547,,383547,615,python_function,torch/nn/modules/module.py(1918): __getattr__
+6083647122588.489,611,X,979,30.039,383547,,383547,616,python_function,<built-in method add_ of Tensor object at 0x7f408c6d2390>
+6083647122621.36,611,X,980,0.869,383547,,383547,617,python_function,torch/nn/modules/module.py(1918): __getattr__
+6083647122623.313,611,X,981,0.71,383547,,383547,618,python_function,torch/nn/modules/module.py(1918): __getattr__
+6083647122625.058,611,X,982,0.346,383547,,383547,619,python_function,torch/nn/modules/module.py(1918): __getattr__
+6083647122626.306,611,X,983,0.325,383547,,383547,620,python_function,torch/nn/modules/module.py(1918): __getattr__
+6083647122627.235,611,X,984,132.331,383547,,383547,621,python_function,torch/nn/functional.py(2781): batch_norm
+6083647122627.642,621,X,985,0.404,383547,,383547,622,python_function,<built-in function _has_torch_function_variadic>
+6083647122628.468,621,X,986,1.147,383547,,383547,623,python_function,<built-in method size of Tensor object at 0x7f41663e0fe0>
+6083647122629.981,621,X,987,3.369,383547,,383547,624,python_function,torch/nn/functional.py(2762): _verify_batch_size
+6083647122630.681,624,X,988,0.253,383547,,383547,625,python_function,<built-in function len>
+6083647122636.21,621,X,989,0.84,383547,,383547,626,python_function,torch/backends/__init__.py(38): __get__
+6083647122636.585,626,X,990,0.376,383547,,383547,627,python_function,<built-in function _get_cudnn_enabled>
+6083647122637.455,621,X,991,121.886,383547,,383547,628,python_function,<built-in method batch_norm of type object at 0x7f41e7e5f1c0>
+6083647122766.759,596,X,992,96.575,383547,10,383547,629,python_function,nn.Module: ReLU6_10
+6083647122768.061,629,X,993,94.869,383547,,383547,630,python_function,torch/nn/modules/module.py(1740): _call_impl
+6083647122768.637,630,X,994,1.397,383547,,383547,631,python_function,<built-in method _get_tracing_state of PyCapsule object at 0x7f41fc1f7a20>
+6083647122771.755,630,X,995,90.861,383547,,383547,632,python_function,torch/nn/modules/activation.py(268): forward
+6083647122772.875,632,X,996,89.535,383547,,383547,633,python_function,torch/nn/functional.py(1745): hardtanh
+6083647122773.08,633,X,997,0.352,383547,,383547,634,python_function,<built-in function _has_torch_function_unary>
+6083647122774.477,633,X,998,87.649,383547,,383547,635,python_function,<built-in function hardtanh_>
+6083647122868.944,589,X,999,468.268,383547,16,383547,636,python_function,nn.Module: Sequential_16
+6083647122870.016,636,X,1000,466.781,383547,,383547,637,python_function,torch/nn/modules/module.py(1740): _call_impl
+6083647122870.41,637,X,1001,1.087,383547,,383547,638,python_function,<built-in method _get_tracing_state of PyCapsule object at 0x7f41fc1f7a20>
+6083647122873.111,637,X,1002,463.461,383547,,383547,639,python_function,torch/nn/modules/container.py(248): forward
+6083647122873.556,639,X,1003,1.571,383547,,383547,640,python_function,torch/nn/modules/container.py(240): __iter__
+6083647122874.104,640,X,1004,0.322,383547,,383547,641,python_function,<built-in method values of collections.defaultdict object at 0x7f408de37ba0>
+6083647122874.651,640,X,1005,0.319,383547,,383547,642,python_function,<built-in function iter>
+6083647122880.957,639,X,1006,168.507,383547,11,383547,643,python_function,nn.Module: Conv2d_11
+6083647122881.821,643,X,1007,167.09,383547,,383547,644,python_function,torch/nn/modules/module.py(1740): _call_impl
+6083647122882.11,644,X,1008,0.349,383547,,383547,645,python_function,<built-in method _get_tracing_state of PyCapsule object at 0x7f41fc1f7a20>
+6083647122883.71,644,X,1009,164.865,383547,,383547,646,python_function,torch/nn/modules/conv.py(553): forward
+6083647122886.183,646,X,1010,0.859,383547,,383547,647,python_function,torch/nn/modules/module.py(1918): __getattr__
+6083647122888.182,646,X,1011,0.378,383547,,383547,648,python_function,torch/nn/modules/module.py(1918): __getattr__
+6083647122888.883,646,X,1012,159.342,383547,,383547,649,python_function,torch/nn/modules/conv.py(536): _conv_forward
+6083647122890.256,649,X,1013,157.683,383547,,383547,650,python_function,<built-in method conv2d of type object at 0x7f41e7e5f1c0>
+6083647123057.814,639,X,1014,180.204,383547,11,383547,651,python_function,nn.Module: BatchNorm2d_11
+6083647123059.25,651,X,1015,178.223,383547,,383547,652,python_function,torch/nn/modules/module.py(1740): _call_impl
+6083647123059.945,652,X,1016,1.386,383547,,383547,653,python_function,<built-in method _get_tracing_state of PyCapsule object at 0x7f41fc1f7a20>
+6083647123063.065,652,X,1017,174.068,383547,,383547,654,python_function,torch/nn/modules/batchnorm.py(159): forward
+6083647123063.618,654,X,1018,1.051,383547,,383547,655,python_function,torch/nn/modules/batchnorm.py(450): _check_input_dim
+6083647123063.962,655,X,1019,0.348,383547,,383547,656,python_function,<built-in method dim of Tensor object at 0x7f41663e0fe0>
+6083647123067.361,654,X,1020,1.316,383547,,383547,657,python_function,torch/nn/modules/module.py(1918): __getattr__
+6083647123069.692,654,X,1021,0.624,383547,,383547,658,python_function,torch/nn/modules/module.py(1918): __getattr__
+6083647123070.682,654,X,1022,28.649,383547,,383547,659,python_function,<built-in method add_ of Tensor object at 0x7f408c6d2390>
+6083647123102.082,654,X,1023,0.846,383547,,383547,660,python_function,torch/nn/modules/module.py(1918): __getattr__
+6083647123104.024,654,X,1024,0.626,383547,,383547,661,python_function,torch/nn/modules/module.py(1918): __getattr__
+6083647123105.658,654,X,1025,0.342,383547,,383547,662,python_function,torch/nn/modules/module.py(1918): __getattr__
+6083647123106.889,654,X,1026,0.351,383547,,383547,663,python_function,torch/nn/modules/module.py(1918): __getattr__
+6083647123107.87,654,X,1027,128.94,383547,,383547,664,python_function,torch/nn/functional.py(2781): batch_norm
+6083647123108.202,664,X,1028,0.41,383547,,383547,665,python_function,<built-in function _has_torch_function_variadic>
+6083647123109.019,664,X,1029,1.186,383547,,383547,666,python_function,<built-in method size of Tensor object at 0x7f41663e0fe0>
+6083647123110.534,664,X,1030,3.306,383547,,383547,667,python_function,torch/nn/functional.py(2762): _verify_batch_size
+6083647123111.253,667,X,1031,0.255,383547,,383547,668,python_function,<built-in function len>
+6083647123116.43,664,X,1032,0.845,383547,,383547,669,python_function,torch/backends/__init__.py(38): __get__
+6083647123116.802,669,X,1033,0.394,383547,,383547,670,python_function,<built-in function _get_cudnn_enabled>
+6083647123117.692,664,X,1034,118.918,383547,,383547,671,python_function,<built-in method batch_norm of type object at 0x7f41e7e5f1c0>
+6083647123243.66,639,X,1035,92.08,383547,11,383547,672,python_function,nn.Module: ReLU6_11
+6083647123244.891,672,X,1036,90.419,383547,,383547,673,python_function,torch/nn/modules/module.py(1740): _call_impl
+6083647123245.422,673,X,1037,1.198,383547,,383547,674,python_function,<built-in method _get_tracing_state of PyCapsule object at 0x7f41fc1f7a20>
+6083647123248.317,673,X,1038,86.71,383547,,383547,675,python_function,torch/nn/modules/activation.py(268): forward
+6083647123249.224,675,X,1039,85.555,383547,,383547,676,python_function,torch/nn/functional.py(1745): hardtanh
+6083647123249.507,676,X,1040,0.341,383547,,383547,677,python_function,<built-in function _has_torch_function_unary>
+6083647123250.883,676,X,1041,83.627,383547,,383547,678,python_function,<built-in function hardtanh_>
+6083647123341.212,589,X,1042,492.572,383547,17,383547,679,python_function,nn.Module: Sequential_17
+6083647123342.311,679,X,1043,490.974,383547,,383547,680,python_function,torch/nn/modules/module.py(1740): _call_impl
+6083647123342.858,680,X,1044,0.959,383547,,383547,681,python_function,<built-in method _get_tracing_state of PyCapsule object at 0x7f41fc1f7a20>
+6083647123345.447,680,X,1045,487.554,383547,,383547,682,python_function,torch/nn/modules/container.py(248): forward
+6083647123345.886,682,X,1046,1.487,383547,,383547,683,python_function,torch/nn/modules/container.py(240): __iter__
+6083647123346.453,683,X,1047,0.251,383547,,383547,684,python_function,<built-in method values of collections.defaultdict object at 0x7f408de37ba0>
+6083647123346.93,683,X,1048,0.294,383547,,383547,685,python_function,<built-in function iter>
+6083647123353.722,682,X,1049,169.086,383547,12,383547,686,python_function,nn.Module: Conv2d_12
+6083647123354.453,686,X,1050,167.863,383547,,383547,687,python_function,torch/nn/modules/module.py(1740): _call_impl
+6083647123354.711,687,X,1051,0.413,383547,,383547,688,python_function,<built-in method _get_tracing_state of PyCapsule object at 0x7f41fc1f7a20>
+6083647123356.397,687,X,1052,165.6,383547,,383547,689,python_function,torch/nn/modules/conv.py(553): forward
+6083647123358.555,689,X,1053,0.9,383547,,383547,690,python_function,torch/nn/modules/module.py(1918): __getattr__
+6083647123360.44,689,X,1054,0.39,383547,,383547,691,python_function,torch/nn/modules/module.py(1918): __getattr__
+6083647123361.169,689,X,1055,160.445,383547,,383547,692,python_function,torch/nn/modules/conv.py(536): _conv_forward
+6083647123362.458,692,X,1056,158.873,383547,,383547,693,python_function,<built-in method conv2d of type object at 0x7f41e7e5f1c0>
+6083647123531.016,682,X,1057,179.921,383547,12,383547,694,python_function,nn.Module: BatchNorm2d_12
+6083647123532.402,694,X,1058,177.975,383547,,383547,695,python_function,torch/nn/modules/module.py(1740): _call_impl
+6083647123533.092,695,X,1059,1.392,383547,,383547,696,python_function,<built-in method _get_tracing_state of PyCapsule object at 0x7f41fc1f7a20>
+6083647123536.638,695,X,1060,173.422,383547,,383547,697,python_function,torch/nn/modules/batchnorm.py(159): forward
+6083647123537.19,697,X,1061,1.153,383547,,383547,698,python_function,torch/nn/modules/batchnorm.py(450): _check_input_dim
+6083647123537.523,698,X,1062,0.451,383547,,383547,699,python_function,<built-in method dim of Tensor object at 0x7f41663e0fe0>
+6083647123541.01,697,X,1063,1.344,383547,,383547,700,python_function,torch/nn/modules/module.py(1918): __getattr__
+6083647123543.31,697,X,1064,0.536,383547,,383547,701,python_function,torch/nn/modules/module.py(1918): __getattr__
+6083647123544.175,697,X,1065,28.701,383547,,383547,702,python_function,<built-in method add_ of Tensor object at 0x7f408c6d2390>
+6083647123575.422,697,X,1066,0.923,383547,,383547,703,python_function,torch/nn/modules/module.py(1918): __getattr__
+6083647123577.451,697,X,1067,0.679,383547,,383547,704,python_function,torch/nn/modules/module.py(1918): __getattr__
+6083647123579.124,697,X,1068,0.32,383547,,383547,705,python_function,torch/nn/modules/module.py(1918): __getattr__
+6083647123580.335,697,X,1069,0.315,383547,,383547,706,python_function,torch/nn/modules/module.py(1918): __getattr__
+6083647123581.218,697,X,1070,128.526,383547,,383547,707,python_function,torch/nn/functional.py(2781): batch_norm
+6083647123581.612,707,X,1071,0.41,383547,,383547,708,python_function,<built-in function _has_torch_function_variadic>
+6083647123582.42,707,X,1072,1.236,383547,,383547,709,python_function,<built-in method size of Tensor object at 0x7f41663e0fe0>
+6083647123584.05,707,X,1073,3.248,383547,,383547,710,python_function,torch/nn/functional.py(2762): _verify_batch_size
+6083647123584.712,710,X,1074,0.259,383547,,383547,711,python_function,<built-in function len>
+6083647123589.948,707,X,1075,0.796,383547,,383547,712,python_function,torch/backends/__init__.py(38): __get__
+6083647123590.309,712,X,1076,0.363,383547,,383547,713,python_function,<built-in function _get_cudnn_enabled>
+6083647123591.192,707,X,1077,118.304,383547,,383547,714,python_function,<built-in method batch_norm of type object at 0x7f41e7e5f1c0>
+6083647123715.825,682,X,1078,116.338,383547,12,383547,715,python_function,nn.Module: ReLU6_12
+6083647123717.112,715,X,1079,114.514,383547,,383547,716,python_function,torch/nn/modules/module.py(1740): _call_impl
+6083647123717.607,716,X,1080,1.257,383547,,383547,717,python_function,<built-in method _get_tracing_state of PyCapsule object at 0x7f41fc1f7a20>
+6083647123723.662,716,X,1081,107.703,383547,,383547,718,python_function,torch/nn/modules/activation.py(268): forward
+6083647123724.578,718,X,1082,106.49,383547,,383547,719,python_function,torch/nn/functional.py(1745): hardtanh
+6083647123724.869,719,X,1083,0.371,383547,,383547,720,python_function,<built-in function _has_torch_function_unary>
+6083647123726.216,719,X,1084,104.556,383547,,383547,721,python_function,<built-in function hardtanh_>
+6083647123838.53,589,X,1085,57.266,383547,4,383547,722,python_function,nn.Module: MaxPool2d_4
+6083647123839.771,722,X,1086,55.603,383547,,383547,723,python_function,torch/nn/modules/module.py(1740): _call_impl
+6083647123840.421,723,X,1087,1.139,383547,,383547,724,python_function,<built-in method _get_tracing_state of PyCapsule object at 0x7f41fc1f7a20>
+6083647123843.535,723,X,1088,51.661,383547,,383547,725,python_function,torch/nn/modules/pooling.py(212): forward
+6083647123845.264,725,X,1089,49.387,383547,,383547,726,python_function,torch/_jit_internal.py(614): fn
+6083647123846.876,726,X,1090,47.192,383547,,383547,727,python_function,torch/nn/functional.py(807): _max_pool2d
+6083647123847.121,727,X,1091,0.156,383547,,383547,728,python_function,<built-in function _has_torch_function_unary>
+6083647123847.795,727,X,1092,46.1,383547,,383547,729,python_function,<built-in method max_pool2d of type object at 0x7f41e7e5f1c0>
+6083647123899.429,90,X,1093,1.576,383547,,383547,730,python_function,<built-in method size of Tensor object at 0x7f41663e0fe0>
+6083647123907.084,90,X,1094,16.682,383547,,383547,731,python_function,<built-in method view of Tensor object at 0x7f408a819d00>
+6083647123927.628,90,X,1095,2.12,383547,,383547,732,python_function,torch/nn/modules/module.py(1918): __getattr__
+6083647123933.565,90,X,1096,529.567,383547,18,383547,733,python_function,nn.Module: Sequential_18
+6083647123934.433,733,X,1097,528.164,383547,,383547,734,python_function,torch/nn/modules/module.py(1740): _call_impl
+6083647123934.911,734,X,1098,1.086,383547,,383547,735,python_function,<built-in method _get_tracing_state of PyCapsule object at 0x7f41fc1f7a20>
+6083647123937.38,734,X,1099,524.964,383547,,383547,736,python_function,torch/nn/modules/container.py(248): forward
+6083647123937.837,736,X,1100,1.647,383547,,383547,737,python_function,torch/nn/modules/container.py(240): __iter__
+6083647123938.521,737,X,1101,0.28,383547,,383547,738,python_function,<built-in method values of collections.defaultdict object at 0x7f408de37ba0>
+6083647123939.019,737,X,1102,0.314,383547,,383547,739,python_function,<built-in function iter>
+6083647123960.003,736,X,1103,123.034,383547,0,383547,740,python_function,nn.Module: Linear_0
+6083647123961.105,740,X,1104,121.35,383547,,383547,741,python_function,torch/nn/modules/module.py(1740): _call_impl
+6083647123961.461,741,X,1105,0.409,383547,,383547,742,python_function,<built-in method _get_tracing_state of PyCapsule object at 0x7f41fc1f7a20>
+6083647123965.15,741,X,1106,116.81,383547,,383547,743,python_function,torch/nn/modules/linear.py(124): forward
+6083647123968.054,743,X,1107,0.47,383547,,383547,744,python_function,torch/nn/modules/module.py(1918): __getattr__
+6083647123969.524,743,X,1108,0.403,383547,,383547,745,python_function,torch/nn/modules/module.py(1918): __getattr__
+6083647123972.118,743,X,1109,109.575,383547,,383547,746,python_function,<built-in function linear>
+6083647124092.776,736,X,1110,102.737,383547,0,383547,747,python_function,nn.Module: Dropout_0
+6083647124093.993,747,X,1111,100.95,383547,,383547,748,python_function,torch/nn/modules/module.py(1740): _call_impl
+6083647124094.532,748,X,1112,1.231,383547,,383547,749,python_function,<built-in method _get_tracing_state of PyCapsule object at 0x7f41fc1f7a20>
+6083647124097.607,748,X,1113,97.034,383547,,383547,750,python_function,torch/nn/modules/dropout.py(69): forward
+6083647124101.617,750,X,1114,92.666,383547,,383547,751,python_function,torch/nn/functional.py(1401): dropout
+6083647124102.144,751,X,1115,0.318,383547,,383547,752,python_function,<built-in function _has_torch_function_unary>
+6083647124109.304,751,X,1116,3.345,383547,,383547,753,python_function,torch/_VF.py(27): __getattr__
+6083647124111.823,753,X,1117,0.682,383547,,383547,754,python_function,<built-in function getattr>
+6083647124116.441,751,X,1118,77.628,383547,,383547,755,python_function,<built-in method dropout of type object at 0x7f41e7e5f1c0>
+6083647124208.739,736,X,1119,83.759,383547,1,383547,756,python_function,nn.Module: Linear_1
+6083647124209.771,756,X,1120,82.361,383547,,383547,757,python_function,torch/nn/modules/module.py(1740): _call_impl
+6083647124210.24,757,X,1121,0.934,383547,,383547,758,python_function,<built-in method _get_tracing_state of PyCapsule object at 0x7f41fc1f7a20>
+6083647124212.387,757,X,1122,79.384,383547,,383547,759,python_function,torch/nn/modules/linear.py(124): forward
+6083647124214.313,759,X,1123,0.961,383547,,383547,760,python_function,torch/nn/modules/module.py(1918): __getattr__
+6083647124216.167,759,X,1124,0.401,383547,,383547,761,python_function,torch/nn/modules/module.py(1918): __getattr__
+6083647124216.816,759,X,1125,74.682,383547,,383547,762,python_function,<built-in function linear>
+6083647124297.22,736,X,1126,72.284,383547,1,383547,763,python_function,nn.Module: Dropout_1
+6083647124298.228,763,X,1127,70.86,383547,,383547,764,python_function,torch/nn/modules/module.py(1740): _call_impl
+6083647124298.618,764,X,1128,0.979,383547,,383547,765,python_function,<built-in method _get_tracing_state of PyCapsule object at 0x7f41fc1f7a20>
+6083647124300.694,764,X,1129,68.151,383547,,383547,766,python_function,torch/nn/modules/dropout.py(69): forward
+6083647124301.635,766,X,1130,66.991,383547,,383547,767,python_function,torch/nn/functional.py(1401): dropout
+6083647124301.938,767,X,1131,0.337,383547,,383547,768,python_function,<built-in function _has_torch_function_unary>
+6083647124306.621,767,X,1132,1.036,383547,,383547,769,python_function,torch/_VF.py(27): __getattr__
+6083647124307.256,769,X,1133,0.324,383547,,383547,770,python_function,<built-in function getattr>
+6083647124308.079,767,X,1134,60.379,383547,,383547,771,python_function,<built-in method dropout of type object at 0x7f41e7e5f1c0>
+6083647124380.878,736,X,1135,80.293,383547,2,383547,772,python_function,nn.Module: Linear_2
+6083647124381.98,772,X,1136,78.68,383547,,383547,773,python_function,torch/nn/modules/module.py(1740): _call_impl
+6083647124382.405,773,X,1137,0.842,383547,,383547,774,python_function,<built-in method _get_tracing_state of PyCapsule object at 0x7f41fc1f7a20>
+6083647124384.895,773,X,1138,75.378,383547,,383547,775,python_function,torch/nn/modules/linear.py(124): forward
+6083647124386.521,775,X,1139,0.766,383547,,383547,776,python_function,torch/nn/modules/module.py(1918): __getattr__
+6083647124388.131,775,X,1140,0.315,383547,,383547,777,python_function,torch/nn/modules/module.py(1918): __getattr__
+6083647124388.645,775,X,1141,71.439,383547,,383547,778,python_function,<built-in function linear>
+6083647124609.056,56,X,1142,3798.409,383547,,383547,779,python_function,torch/profiler/profiler.py(766): step
+6083647124611.592,779,X,1143,116.81,383547,,383547,780,python_function,torch/autograd/profiler.py(738): __exit__
+6083647124615.29,780,X,1144,0.255,383547,,383547,781,python_function,torch/_jit_internal.py(103): is_scripting
+6083647124623.614,780,X,1145,101.294,383547,,383547,782,python_function,torch/_ops.py(939): __call__
+6083647124625.34,782,X,1146,78.547,383547,,383547,783,python_function,torch/_ops.py(993): _must_dispatch_in_python
+6083647124629.97,783,X,1147,73.197,383547,,383547,784,python_function,torch/utils/_pytree.py(1197): tree_any
+6083647124638.02,784,X,1148,64.891,383547,,383547,785,python_function,<built-in function any>
+6083647124638.949,785,X,1149,43.141,383547,,383547,786,python_function,torch/utils/_pytree.py(890): tree_iter
+6083647124639.935,786,X,1150,26.712,383547,,383547,787,python_function,torch/utils/_pytree.py(672): _is_leaf
+6083647124641.23,787,X,1151,24.445,383547,,383547,788,python_function,torch/utils/_pytree.py(665): _get_node_type
+6083647124642.433,788,X,1152,22.848,383547,,383547,789,python_function,torch/utils/_pytree.py(654): _is_namedtuple_instance
+6083647124663.826,789,X,1153,0.414,383547,,383547,790,python_function,<built-in function len>
+6083647124667.497,786,X,1154,1.273,383547,,383547,791,python_function,torch/utils/_pytree.py(665): _get_node_type
+6083647124667.768,791,X,1155,0.807,383547,,383547,792,python_function,torch/utils/_pytree.py(654): _is_namedtuple_instance
+6083647124668.215,792,X,1156,0.072,383547,,383547,793,python_function,<built-in function len>
+6083647124670.645,786,X,1157,1.229,383547,,383547,794,python_function,torch/utils/_pytree.py(411): _tuple_flatten
+6083647124674.061,786,X,1158,7.936,383547,,383547,795,python_function,torch/utils/_pytree.py(890): tree_iter
+6083647124674.497,795,X,1159,1.625,383547,,383547,796,python_function,torch/utils/_pytree.py(672): _is_leaf
+6083647124674.867,796,X,1160,0.971,383547,,383547,797,python_function,torch/utils/_pytree.py(665): _get_node_type
+6083647124675.114,797,X,1161,0.571,383547,,383547,798,python_function,torch/utils/_pytree.py(654): _is_namedtuple_instance
+6083647124675.441,798,X,1162,0.045,383547,,383547,799,python_function,<built-in function len>
+6083647124676.469,795,X,1163,0.742,383547,,383547,800,python_function,torch/utils/_pytree.py(665): _get_node_type
+6083647124676.652,800,X,1164,0.451,383547,,383547,801,python_function,torch/utils/_pytree.py(654): _is_namedtuple_instance
+6083647124676.897,801,X,1165,0.043,383547,,383547,802,python_function,<built-in function len>
+6083647124677.764,795,X,1166,0.383,383547,,383547,803,python_function,torch/utils/_pytree.py(411): _tuple_flatten
+6083647124679.046,795,X,1167,2.708,383547,,383547,804,python_function,torch/utils/_pytree.py(890): tree_iter
+6083647124679.321,804,X,1168,2.189,383547,,383547,805,python_function,torch/utils/_pytree.py(672): _is_leaf
+6083647124679.583,805,X,1169,1.729,383547,,383547,806,python_function,torch/utils/_pytree.py(665): _get_node_type
+6083647124679.824,806,X,1170,1.378,383547,,383547,807,python_function,torch/utils/_pytree.py(654): _is_namedtuple_instance
+6083647124680.826,807,X,1171,0.046,383547,,383547,808,python_function,<built-in function len>
+6083647124682.861,785,X,1172,3.772,383547,,383547,809,python_function,torch/_ops.py(995): <lambda>
+6083647124685.874,809,X,1173,0.617,383547,,383547,810,python_function,<built-in function isinstance>
+6083647124687.398,785,X,1174,14.787,383547,,383547,811,python_function,torch/utils/_pytree.py(904): tree_iter
+6083647124687.934,811,X,1175,1.317,383547,,383547,812,python_function,torch/utils/_pytree.py(904): tree_iter
+6083647124688.348,812,X,1176,0.143,383547,,383547,813,python_function,torch/utils/_pytree.py(896): tree_iter
+6083647124690.202,811,X,1177,11.603,383547,,383547,814,python_function,torch/utils/_pytree.py(890): tree_iter
+6083647124690.435,814,X,1178,1.52,383547,,383547,815,python_function,torch/utils/_pytree.py(672): _is_leaf
+6083647124690.748,815,X,1179,1.015,383547,,383547,816,python_function,torch/utils/_pytree.py(665): _get_node_type
+6083647124690.958,816,X,1180,0.651,383547,,383547,817,python_function,torch/utils/_pytree.py(654): _is_namedtuple_instance
+6083647124691.331,817,X,1181,0.05,383547,,383547,818,python_function,<built-in function len>
+6083647124692.201,814,X,1182,0.724,383547,,383547,819,python_function,torch/utils/_pytree.py(665): _get_node_type
+6083647124692.39,819,X,1183,0.433,383547,,383547,820,python_function,torch/utils/_pytree.py(654): _is_namedtuple_instance
+6083647124692.627,820,X,1184,0.045,383547,,383547,821,python_function,<built-in function len>
+6083647124694.055,814,X,1185,7.369,383547,,383547,822,python_function,torch/utils/_pytree.py(439): _dict_flatten
+6083647124694.974,822,X,1186,0.232,383547,,383547,823,python_function,<built-in method values of collections.defaultdict object at 0x7f408de37ba0>
+6083647124700.539,822,X,1187,0.228,383547,,383547,824,python_function,<built-in method keys of dict object at 0x7f408aa29000>
+6083647124706.91,782,X,1188,17.824,383547,,383547,825,python_function,<built-in method  of PyCapsule object at 0x7f41fd4b3c60>
+6083647124727.816,779,X,1189,0.288,383547,,383547,826,python_function,<built-in method __exit__ of torch._C.DisableTorchFunctionSubclass object at 0x7f41fd558e90>
+6083647124731.707,779,X,1190,4.321,383547,,383547,827,python_function,torch/profiler/profiler.py(420): schedule_fn
+6083647124737.331,779,X,1191,3670.134,383547,,383547,828,python_function,torch/profiler/profiler.py(789): _transit_action
+6083647124739.825,828,X,1192,12.029,383547,,383547,829,python_function,<built-in method get of dict object at 0x7f408ab00200>
+6083647124741.241,829,X,1193,8.83,383547,,383547,830,python_function,enum.py(783): __hash__
+6083647124749.489,830,X,1194,0.436,383547,,383547,831,python_function,<built-in function hash>
+6083647124750.641,829,X,1195,0.564,383547,,383547,832,python_function,enum.py(783): __hash__
+6083647124751.045,832,X,1196,0.094,383547,,383547,833,python_function,<built-in function hash>
+6083647124755.237,828,X,1197,3652.228,383547,,383547,834,python_function,torch/profiler/profiler.py(208): stop_trace
+6083647124758.015,834,X,1198,3649.45,383547,,383547,835,python_function,torch/autograd/profiler.py(344): __exit__
+6083647124762.269,835,X,1199,0.873,383547,,383547,836,python_function,<built-in function hasattr>
+6083647124764.155,835,X,1200,0.259,383547,,383547,837,python_function,<built-in function getattr>
+6083647124766.41,835,X,1201,0.56,383547,,383547,838,python_function,<built-in function hasattr>
+6083647124771.796,835,X,1202,3635.669,383547,,383547,839,python_function,torch/cuda/__init__.py(944): synchronize
+6083647124773.391,839,X,1203,5.143,383547,,383547,840,python_function,torch/cuda/__init__.py(289): _lazy_init
+6083647124774.928,840,X,1204,3.359,383547,,383547,841,python_function,torch/cuda/__init__.py(242): is_initialized
+6083647124777.24,841,X,1205,0.875,383547,,383547,842,python_function,<built-in function _cuda_isInBadFork>
+6083647124783.339,839,X,1206,59.917,383547,,383547,843,python_function,torch/cuda/__init__.py(439): __init__
+6083647124786.376,843,X,1207,55.569,383547,,383547,844,python_function,torch/cuda/_utils.py(9): _get_device_index
+6083647124787.141,844,X,1208,0.254,383547,,383547,845,python_function,<built-in function isinstance>
+6083647124788.24,844,X,1209,0.061,383547,,383547,846,python_function,<built-in function isinstance>
+6083647124788.967,844,X,1210,0.068,383547,,383547,847,python_function,<built-in function isinstance>
+6083647124790.029,844,X,1211,0.107,383547,,383547,848,python_function,torch/_jit_internal.py(103): is_scripting
+6083647124791.007,844,X,1212,0.074,383547,,383547,849,python_function,<built-in function isinstance>
+6083647124792.483,844,X,1213,49.242,383547,,383547,850,python_function,torch/_utils.py(773): _get_device_index
+6083647124793.209,850,X,1214,0.064,383547,,383547,851,python_function,<built-in function isinstance>
+6083647124794.075,850,X,1215,0.12,383547,,383547,852,python_function,<built-in function isinstance>
+6083647124794.694,850,X,1216,0.069,383547,,383547,853,python_function,<built-in function isinstance>
+6083647124795.44,850,X,1217,0.11,383547,,383547,854,python_function,torch/_jit_internal.py(103): is_scripting
+6083647124796.504,850,X,1218,44.874,383547,,383547,855,python_function,torch/_utils.py(747): _get_current_device_index
+6083647124798.123,855,X,1219,42.945,383547,,383547,856,python_function,torch/_utils.py(733): _get_device_attr
+6083647124799.352,856,X,1220,26.274,383547,,383547,857,python_function,torch/_utils.py(718): _get_available_device_type
+6083647124800.663,857,X,1221,24.637,383547,,383547,858,python_function,torch/cuda/__init__.py(116): is_available
+6083647124802.173,858,X,1222,1.026,383547,,383547,859,python_function,torch/cuda/__init__.py(107): _is_compiled
+6083647124802.81,859,X,1223,0.326,383547,,383547,860,python_function,<built-in function hasattr>
+6083647124803.927,858,X,1224,18.45,383547,,383547,861,python_function,torch/cuda/__init__.py(112): _nvml_based_avail
+6083647124805.744,861,X,1225,16.183,383547,,383547,862,python_function,os.py(772): getenv
+6083647124808.454,862,X,1226,13.24,383547,,383547,863,python_function,_collections_abc.py(821): get
+6083647124809.757,863,X,1227,9.986,383547,,383547,864,python_function,os.py(675): __getitem__
+6083647124811.968,864,X,1228,3.801,383547,,383547,865,python_function,os.py(755): encode
+6083647124812.565,865,X,1229,0.079,383547,,383547,866,python_function,<built-in function isinstance>
+6083647124815.006,865,X,1230,0.621,383547,,383547,867,python_function,<built-in method encode of str object at 0x7f41fc0bc1c0>
+6083647124824.139,858,X,1231,0.951,383547,,383547,868,python_function,<built-in function _cuda_getDeviceCount>
+6083647124827.828,856,X,1232,0.66,383547,,383547,869,python_function,<built-in method lower of str object at 0x7f420fcb16b0>
+6083647124829.836,856,X,1233,11.038,383547,,383547,870,python_function,torch/_utils.py(749): <lambda>
+6083647124832.007,870,X,1234,8.708,383547,,383547,871,python_function,torch/cuda/__init__.py(938): current_device
+6083647124832.687,871,X,1235,1.056,383547,,383547,872,python_function,torch/cuda/__init__.py(289): _lazy_init
+6083647124833.06,872,X,1236,0.565,383547,,383547,873,python_function,torch/cuda/__init__.py(242): is_initialized
+6083647124833.351,873,X,1237,0.221,383547,,383547,874,python_function,<built-in function _cuda_isInBadFork>
+6083647124835.957,871,X,1238,4.667,383547,,383547,875,python_function,<built-in function _cuda_getDevice>
+6083647124847.176,839,X,1239,6.383,383547,,383547,876,python_function,torch/cuda/__init__.py(443): __enter__
+6083647124850.813,876,X,1240,2.38,383547,,383547,877,python_function,<built-in function _cuda_exchangeDevice>
+6083647124855.411,839,X,1241,3534.229,383547,,383547,878,python_function,<built-in function _cuda_synchronize>
+6083647128390.683,839,X,1242,16.782,383547,,383547,879,python_function,torch/cuda/__init__.py(446): __exit__
+6083647128392.734,879,X,1243,1.638,383547,,383547,880,python_function,<built-in function _cuda_maybeExchangeDevice>
+6083647128397.075,879,X,1244,0.822,383547,,383547,881,python_function,<built-in function perf_counter_ns>
+6083647128400.481,879,X,1245,6.984,383547,,383547,882,python_function,<built-in method _disable_profiler of PyCapsule object at 0x7f408de24f30>

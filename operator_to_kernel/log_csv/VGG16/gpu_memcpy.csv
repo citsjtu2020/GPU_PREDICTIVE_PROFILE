@@ -1,0 +1,14 @@
+ts,correlation,device,ph,bytes,dur,tid,pid,cat,memory bandwidth (GB/s),stream,External id,name,context
+6083647120860.841,96,0,X,12845056,46.368,7,0,gpu_memcpy,138.83695240977528,7,23,Memcpy DtoD (Device -> Device),1
+6083647121219.241,207,0,X,12845056,45.824,7,0,gpu_memcpy,140.4844587352626,7,48,Memcpy DtoD (Device -> Device),1
+6083647121481.768,338,0,X,6422528,23.296,7,0,gpu_memcpy,138.16939526278424,7,75,Memcpy DtoD (Device -> Device),1
+6083647121711.144,453,0,X,6422528,23.327,7,0,gpu_memcpy,137.982383018949,7,100,Memcpy DtoD (Device -> Device),1
+6083647121871.176,584,0,X,3211264,8.768,7,0,gpu_memcpy,183.55324378393826,7,127,Memcpy DtoD (Device -> Device),1
+6083647122017.383,701,0,X,3211264,8.448,7,0,gpu_memcpy,190.51162790697674,7,152,Memcpy DtoD (Device -> Device),1
+6083647122167.367,818,0,X,3211264,8.416,7,0,gpu_memcpy,191.2263443101292,7,177,Memcpy DtoD (Device -> Device),1
+6083647122289.159,953,0,X,1605632,2.464,7,0,gpu_memcpy,326.54708155379296,7,204,Memcpy DtoD (Device -> Device),1
+6083647122453.062,1073,0,X,1605632,2.497,7,0,gpu_memcpy,322.35133507327845,7,229,Memcpy DtoD (Device -> Device),1
+6083647122616.646,1193,0,X,1605632,2.56,7,0,gpu_memcpy,314.3367267032107,7,254,Memcpy DtoD (Device -> Device),1
+6083647127320.958,1329,0,X,401408,2.047,7,0,gpu_memcpy,98.23984336759668,7,281,Memcpy DtoD (Device -> Device),1
+6083647127425.117,1450,0,X,401408,1.696,7,0,gpu_memcpy,118.6193853427896,7,306,Memcpy DtoD (Device -> Device),1
+6083647127528.477,1571,0,X,401408,1.664,7,0,gpu_memcpy,120.90602409638554,7,331,Memcpy DtoD (Device -> Device),1
